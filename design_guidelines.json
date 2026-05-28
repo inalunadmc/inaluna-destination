@@ -1,0 +1,121 @@
+{
+  "theme": "light",
+  "archetype": "5",
+  "design_philosophy": "A sophisticated, high-end luxury aesthetic tailored for a DMC in Colombia. Blending precision with intuition, the design uses a soft, earthy beige as the canvas, anchored by deep navy for structural authority, and illuminated by subtle gold accents. The layout follows modular bento grids and generous white space to let the photography and typography breathe.",
+  "color_palette": {
+    "primary": "#F5F2ED",
+    "secondary": "#1A2B3C",
+    "tertiary": "#D4C2A1",
+    "background": "#F5F2ED",
+    "text": {
+      "main": "#1A2B3C",
+      "muted": "#4A5D70",
+      "light": "#F5F2ED"
+    },
+    "surface": {
+      "light": "#FFFFFF",
+      "dark": "#1A2B3C",
+      "accent": "#D4C2A1"
+    }
+  },
+  "typography": {
+    "primary_font": "Cormorant Garamond",
+    "secondary_font": "Cormorant Garamond",
+    "font_weights": {
+      "regular": "400",
+      "bold": "700"
+    },
+    "styles": {
+      "h1": "text-5xl md:text-6xl font-bold tracking-tight text-[#1A2B3C] leading-tight",
+      "h2": "text-3xl md:text-4xl font-bold tracking-tight text-[#1A2B3C] leading-snug",
+      "h3": "text-2xl font-bold text-[#1A2B3C]",
+      "body": "text-lg text-[#1A2B3C] leading-relaxed",
+      "body_sm": "text-base text-[#4A5D70] leading-relaxed",
+      "accent_italic": "text-xl md:text-2xl italic font-regular text-[#D4C2A1]",
+      "overline": "text-sm uppercase tracking-[0.2em] text-[#D4C2A1] font-bold"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "section_spacing": "py-24 md:py-32",
+    "grid_gap": "gap-8 md:gap-12",
+    "border_radius": "rounded-none"
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#1A2B3C] text-[#F5F2ED] px-8 py-4 text-lg font-bold tracking-wider uppercase transition-colors hover:bg-[#D4C2A1] hover:text-[#1A2B3C] flex items-center justify-center gap-2",
+      "secondary": "border-2 border-[#1A2B3C] text-[#1A2B3C] px-8 py-4 text-lg font-bold tracking-wider uppercase transition-colors hover:bg-[#1A2B3C] hover:text-[#F5F2ED]"
+    },
+    "cards": {
+      "base": "group relative overflow-hidden bg-white shadow-sm transition-all duration-500 hover:shadow-xl",
+      "image_overlay": "absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/10",
+      "content_container": "absolute inset-0 flex flex-col justify-end p-8 translate-y-4 transition-transform duration-500 group-hover:translate-y-0",
+      "title": "text-3xl font-bold text-white mb-2",
+      "description": "text-white/90 text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100 line-clamp-3"
+    },
+    "inputs": {
+      "base": "w-full bg-transparent border-b-2 border-[#F5F2ED]/30 text-[#F5F2ED] py-3 px-2 focus:outline-none focus:border-[#D4C2A1] transition-colors placeholder-[#F5F2ED]/50"
+    }
+  },
+  "sections": {
+    "hero": {
+      "layout": "h-screen w-full relative flex flex-col items-center justify-center text-center",
+      "background": "Cross-fading slideshow of premium Colombia landscapes",
+      "overlay": "bg-black/40",
+      "content": "Centered logo, floating minimal top navigation (glassmorphism or solid dark blue with opacity), stylish primary CTA."
+    },
+    "who_we_are": {
+      "layout": "bg-[#F5F2ED] py-32 flex justify-center items-center text-center px-6",
+      "typography": "Large elegant text 'Cormorant Garamond', playing with italics for 'precision', 'intuition', 'soul'.",
+      "text": "We were born from the union of two worlds: precision and intuition. We design journeys where structure meets soul, creating experiences that go beyond travel. This is not tourism. It is a curated experience."
+    },
+    "colombia": {
+      "layout": "Modular clean bento-grid. Intro text block spanning full width, followed by interactive cards for destinations.",
+      "interactions": "Hover states on cards reveal destination descriptions with subtle upward translation and shadow enhancement."
+    },
+    "curated_highlights": {
+      "layout": "Similar modular premium grid as Colombia section. Focus on experiences.",
+      "intro_text_list": ["Wellness & Spiritual Retreats", "Private Cultural Immersions", "Luxury Nature Experiences", "Tailor-Made Journeys"]
+    },
+    "contact_footer": {
+      "layout": "Dark section bg-[#1A2B3C] text-[#F5F2ED]. Split layout: Form on one side, contact info/socials on the other.",
+      "form_fields": ["Nombre", "Empresa", "Email Corporativo", "Destino de Interés", "Mensaje"],
+      "footer": "Institutional footer inspired by DMC Network, multi-language selector (ES/EN), social links."
+    }
+  },
+  "motion_and_interactions": {
+    "scroll": "Smooth scrolling (Lenis) recommended. Sections fade in and gently translate up on scroll.",
+    "hover": "Cards scale background images slightly (1.05) and reveal text. Buttons fill with tertiary color."
+  },
+  "media": {
+    "logo": "https://customer-assets.emergentagent.com/job_ee79464f-2c92-4466-93ae-47cdcabd0920/artifacts/8uvg498r_Logo%20Color%20Para%20Canva.png",
+    "hero_slideshow": [
+      "https://images.unsplash.com/photo-1532443603613-61fa154742cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwxfHxjb2xvbWJpYSUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3ODAwMDA3ODR8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.pexels.com/photos/13766896/pexels-photo-13766896.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://images.unsplash.com/photo-1568489711036-9c94a7d5aea6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwzfHxjb2xvbWJpYSUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3ODAwMDA3ODR8MA&ixlib=rb-4.1.0&q=85"
+    ],
+    "destinations": {
+      "bogota": "https://images.pexels.com/photos/19676242/pexels-photo-19676242.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "cartagena": "https://images.pexels.com/photos/18074796/pexels-photo-18074796.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "medellin": "https://images.unsplash.com/photo-1671240432518-747abe186105?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwyfHxtZWRlbGxpbiUyMGNpdHl8ZW58MHx8fHwxNzgwMDAwNzg0fDA&ixlib=rb-4.1.0&q=85",
+      "coffee_region": "https://images.pexels.com/photos/15951870/pexels-photo-15951870.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "cali": "https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwxfHxjYWxpJTIwY29sb21iaWF8ZW58MHx8fHwxNzgwMDAwNzg0fDA&ixlib=rb-4.1.0&q=85"
+    },
+    "highlights": {
+      "wellness": "https://images.pexels.com/photos/12711991/pexels-photo-12711991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "cultural": "https://images.pexels.com/photos/31720547/pexels-photo-31720547.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "nature": "https://images.pexels.com/photos/14524363/pexels-photo-14524363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "tailor_made": "https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Import Cormorant Garamond from Google Fonts and apply it universally to body and headings.",
+    "Do NOT use Inter or standard sans-serif fonts. Rely exclusively on Cormorant Garamond for an editorial, high-end look.",
+    "Implement a smooth image slider for the Hero background.",
+    "Use framer-motion for smooth reveal animations when scrolling down to the 'Who We Are' and Grid sections.",
+    "For cards in 'Colombia' and 'Curated Highlights', use group hover utilities to hide/show the descriptive text on hover to maintain a clean default state.",
+    "Contact form inputs must use custom border styling (bottom border only, transparent background) to match the dark elegant footer section.",
+    "Use Lucide-react for necessary icons (like language selector or social media).",
+    "Ensure the floating navigation header has a transparent or blurred glass effect when at the top, transitioning to a solid `#1A2B3C` background when scrolling."
+  ]
+}
