@@ -1,30 +1,23 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { LanguageProvider } from './context/LanguageContext';
 import { ContactOverlayProvider } from './context/ContactOverlayContext';
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import OurEssence from './components/OurEssence';
-import WhoWeAre from './components/WhoWeAre';
-import Colombia from './components/Colombia';
-import CuratedHighlights from './components/CuratedHighlights';
-import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import ColombiaPage from './pages/ColombiaPage';
 import ContactOverlay from './components/ContactOverlay';
 
 function App() {
   return (
     <LanguageProvider>
       <ContactOverlayProvider>
-        <div className="App">
-          <Navigation />
-          <Hero />
-          <OurEssence />
-          <WhoWeAre />
-          <Colombia />
-          <CuratedHighlights />
-          <Footer />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/colombia" element={<ColombiaPage />} />
+          </Routes>
           <ContactOverlay />
-        </div>
+        </BrowserRouter>
       </ContactOverlayProvider>
     </LanguageProvider>
   );

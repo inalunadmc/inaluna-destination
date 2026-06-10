@@ -38,7 +38,7 @@ const destinations = [
   }
 ];
 
-const Colombia = () => {
+const Colombia = ({ hideHeading = false }) => {
   const { t } = useLanguage();
   const [selectedCity, setSelectedCity] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,15 +61,17 @@ const Colombia = () => {
         data-testid="colombia-section"
       >
         <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-8 text-center"
-          >
-            {t('colombia_title')}
-          </motion.h2>
+          {!hideHeading && (
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-8 text-center"
+            >
+              {t('colombia_title')}
+            </motion.h2>
+          )}
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}

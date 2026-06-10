@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Globe } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useContactOverlay } from '../context/ContactOverlayContext';
 
@@ -7,6 +8,8 @@ const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
   const { openContact } = useContactOverlay();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,9 +20,17 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -34,13 +45,13 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-12">
-          <button
-            onClick={() => scrollToSection('hero')}
+          <Link
+            to="/"
             className="text-[#F5F2ED] text-base font-bold hover:text-[#D4C2A1] transition-colors"
             data-testid="nav-home-btn"
           >
             {t('nav_home')}
-          </button>
+          </Link>
           <button
             onClick={() => scrollToSection('who-we-are')}
             className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
@@ -48,13 +59,13 @@ const Navigation = () => {
           >
             {t('nav_about')}
           </button>
-          <button
-            onClick={() => scrollToSection('colombia')}
+          <Link
+            to="/colombia"
             className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
             data-testid="nav-destinations-btn"
           >
             {t('nav_destinations')}
-          </button>
+          </Link>
           <button
             onClick={() => scrollToSection('highlights')}
             className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"

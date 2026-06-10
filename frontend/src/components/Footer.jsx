@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Instagram, Linkedin, FileText } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useContactOverlay } from '../context/ContactOverlayContext';
@@ -56,9 +57,9 @@ const Footer = () => {
             <button onClick={() => document.getElementById('who-we-are')?.scrollIntoView({ behavior: 'smooth' })} className="block text-[#F5F2ED]/80 hover:text-[#D4C2A1] transition-colors text-base">
               {t('nav_about')}
             </button>
-            <button onClick={() => document.getElementById('colombia')?.scrollIntoView({ behavior: 'smooth' })} className="block text-[#F5F2ED]/80 hover:text-[#D4C2A1] transition-colors text-base">
+            <Link to="/colombia" className="block text-[#F5F2ED]/80 hover:text-[#D4C2A1] transition-colors text-base">
               {t('nav_destinations')}
-            </button>
+            </Link>
             <button onClick={() => document.getElementById('highlights')?.scrollIntoView({ behavior: 'smooth' })} className="block text-[#F5F2ED]/80 hover:text-[#D4C2A1] transition-colors text-base">
               {t('nav_experiences')}
             </button>
