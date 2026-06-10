@@ -2,30 +2,44 @@ import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
+/**
+ * VIDEO ASSETS - Replace freely with your own files.
+ *
+ * To change a video:
+ * 1. Upload your file (MP4/WebM) to /app/frontend/public/videos/
+ * 2. Update the `video` URL below to point to your file (e.g. '/videos/wellness.mp4')
+ *
+ * Currently using temporary Pexels stock videos that match each theme.
+ * The `fallback` image is shown as poster and if the video fails to load.
+ */
 const highlights = [
   {
     id: 'wellness',
     titleKey: 'wellness_title',
-    video: 'https://videos.pexels.com/video-files/4666747/4666747-uhd_2560_1440_30fps.mp4',
-    fallback: 'https://images.pexels.com/photos/12711991/pexels-photo-12711991.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    // Mystical forest / nature in motion
+    video: 'https://videos.pexels.com/video-files/3576378/3576378-hd_1920_1080_24fps.mp4',
+    fallback: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?crop=entropy&cs=tinysrgb&fm=jpg&q=85&w=1200'
   },
   {
     id: 'cultural',
     titleKey: 'cultural_title',
-    video: 'https://videos.pexels.com/video-files/3209298/3209298-uhd_2560_1440_25fps.mp4',
-    fallback: 'https://images.pexels.com/photos/31720547/pexels-photo-31720547.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    // Artisan / cultural / traditional crafts
+    video: 'https://videos.pexels.com/video-files/5077054/5077054-hd_1366_720_25fps.mp4',
+    fallback: 'https://images.pexels.com/photos/31720547/pexels-photo-31720547.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1200'
   },
   {
     id: 'nature',
     titleKey: 'nature_title',
-    video: 'https://videos.pexels.com/video-files/2169880/2169880-uhd_2560_1440_30fps.mp4',
-    fallback: 'https://images.pexels.com/photos/14524363/pexels-photo-14524363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    // Sweeping luxury landscape (mountains/valley)
+    video: 'https://videos.pexels.com/video-files/2330708/2330708-hd_1280_720_30fps.mp4',
+    fallback: 'https://images.pexels.com/photos/15951870/pexels-photo-15951870.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1200'
   },
   {
     id: 'tailor',
     titleKey: 'tailor_title',
-    video: 'https://videos.pexels.com/video-files/3209663/3209663-uhd_2560_1440_25fps.mp4',
-    fallback: 'https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    // Colonial architecture / boutique hospitality
+    video: 'https://videos.pexels.com/video-files/3015526/3015526-hd_1920_1080_24fps.mp4',
+    fallback: 'https://images.unsplash.com/photo-1583531352515-8884af319dc1?crop=entropy&cs=tinysrgb&fm=jpg&q=85&w=1200'
   }
 ];
 
@@ -50,9 +64,11 @@ const HighlightCard = ({ highlight, index, t }) => {
           loop
           muted
           playsInline
+          preload="metadata"
           poster={highlight.fallback}
           onError={() => setVideoError(true)}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          data-testid={`highlight-video-${highlight.id}`}
         />
       ) : (
         <img
