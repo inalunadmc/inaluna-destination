@@ -4,7 +4,6 @@ import { useLanguage } from '../context/LanguageContext';
 import CityModal from './CityModal';
 import ColombiaMap from './ColombiaMap';
 import MapCard from './MapCard';
-import { cityHighlights } from '../data/cityHighlights';
 
 const destinations = [
   {
@@ -41,17 +40,17 @@ const destinations = [
 
 const Colombia = ({ hideHeading = false }) => {
   const { t } = useLanguage();
-  const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedCityId, setSelectedCityId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCityClick = (cityId) => {
-    setSelectedCity(cityHighlights[cityId]);
+    setSelectedCityId(cityId);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setTimeout(() => setSelectedCity(null), 300);
+    setTimeout(() => setSelectedCityId(null), 300);
   };
 
   return (
@@ -120,7 +119,7 @@ const Colombia = ({ hideHeading = false }) => {
         </div>
       </section>
 
-      <CityModal city={selectedCity} isOpen={isModalOpen} onClose={closeModal} />
+      <CityModal cityId={selectedCityId} isOpen={isModalOpen} onClose={closeModal} />
     </>
   );
 };

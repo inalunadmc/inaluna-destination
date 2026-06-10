@@ -1,8 +1,13 @@
 import React from 'react';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+import { cityHighlights } from '../data/cityHighlights';
 
-const CityModal = ({ city, isOpen, onClose }) => {
+const CityModal = ({ cityId, isOpen, onClose }) => {
+  const { language, t } = useLanguage();
+  const city = cityId ? cityHighlights[language]?.[cityId] : null;
+
   if (!city) return null;
 
   const handleBackdropClick = (e) => {
@@ -34,6 +39,7 @@ const CityModal = ({ city, isOpen, onClose }) => {
               onClick={onClose}
               className="absolute top-6 right-6 z-10 text-[#1A2B3C] hover:text-[#D4C2A1] transition-colors"
               data-testid="modal-close-btn"
+              aria-label="Close"
             >
               <X size={32} />
             </button>
@@ -62,7 +68,7 @@ const CityModal = ({ city, isOpen, onClose }) => {
                     </div>
                     <div className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
                       <h3 className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-4">
-                        Curated Highlight {index + 1}
+                        {t('curated_highlight')} {index + 1}
                       </h3>
                       <p className="text-2xl text-[#1A2B3C] leading-relaxed">
                         {highlight.text}
