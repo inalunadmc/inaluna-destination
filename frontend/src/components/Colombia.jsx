@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import CityModal from './CityModal';
 import ColombiaMap from './ColombiaMap';
+import MapCard from './MapCard';
 import { cityHighlights } from '../data/cityHighlights';
 
 const destinations = [
@@ -112,6 +113,7 @@ const Colombia = ({ hideHeading = false }) => {
                 </div>
               </motion.div>
             ))}
+            <MapCard index={destinations.length} />
           </div>
 
           <ColombiaMap />
