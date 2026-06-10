@@ -23,7 +23,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="h-screen w-full relative flex flex-col items-center justify-center text-center overflow-hidden" data-testid="hero-section">
+    <section id="hero" className="relative h-screen max-h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden" data-testid="hero-section">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentImage}
@@ -52,16 +52,6 @@ const Hero = () => {
           className="w-72 md:w-[450px] drop-shadow-2xl"
           data-testid="hero-logo"
         />
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-[#D4C2A1] text-2xl md:text-3xl italic tracking-wider"
-          data-testid="hero-tagline"
-        >
-          {t('hero_tagline')}
-        </motion.p>
         
         <motion.button
           initial={{ opacity: 0, y: 30 }}
@@ -74,6 +64,16 @@ const Hero = () => {
           {t('hero_cta')}
         </motion.button>
       </div>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-[#D4C2A1] text-2xl md:text-3xl italic tracking-wider whitespace-nowrap px-4"
+        data-testid="hero-tagline"
+      >
+        {t('hero_tagline')}
+      </motion.p>
     </section>
   );
 };
