@@ -4,11 +4,13 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import asyncio
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List
 import uuid
 from datetime import datetime, timezone
+import resend
 
 
 ROOT_DIR = Path(__file__).parent
@@ -17,6 +19,10 @@ load_dotenv(ROOT_DIR / '.env')
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
+
+resend.api_key = os.environ.get('RESEND_API_KEY', '')
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
+RECIPIENT_EMAIL = os.environ.get('RECIPIENT_EMAIL', 'info@inalunadmc.com')
 
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
@@ -84,6 +90,48 @@ async def create_contact(input: ContactFormCreate):
     try:
         await db.contact_submissions.insert_one(doc)
         logger.info(f"Contact form submitted: {contact_obj.email}")
+        
+        if resend.api_key:
+            html_content = f"""
+            <html>
+                <body style="font-family: 'Cormorant Garamond', serif; color: #1A2B3C; background-color: #F5F2ED; padding: 40px;">
+                    <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 40px; border: 1px solid #D4C2A1;">
+                        <h1 style="color: #1A2B3C; border-bottom: 2px solid #D4C2A1; padding-bottom: 20px;">New Contact Form Submission</h1>
+                        
+                        <div style="margin: 30px 0;">
+                            <p style="font-size: 18px; margin-bottom: 10px;"><strong>Name:</strong> {contact_obj.name}</p>
+                            <p style="font-size: 18px; margin-bottom: 10px;"><strong>Company:</strong> {contact_obj.company}</p>
+                            <p style="font-size: 18px; margin-bottom: 10px;"><strong>Email:</strong> <a href="mailto:{contact_obj.email}" style="color: #D4C2A1;">{contact_obj.email}</a></p>
+                            <p style="font-size: 18px; margin-bottom: 10px;"><strong>Destination of Interest:</strong> {contact_obj.destination}</p>
+                        </div>
+                        
+                        <div style="margin: 30px 0; padding: 20px; background-color: #F5F2ED; border-left: 4px solid #D4C2A1;">
+                            <p style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Message:</p>
+                            <p style="font-size: 16px; line-height: 1.6;">{contact_obj.message}</p>
+                        </div>
+                        
+                        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #D4C2A1; text-align: center;">
+                            <p style="color: #4A5D70; font-style: italic;">Curated Experiences in Colombia</p>
+                            <p style="color: #1A2B3C; font-size: 14px;">© 2026 Inaluna Destination</p>
+                        </div>
+                    </div>
+                </body>
+            </html>
+            """
+            
+            email_params = {
+                "from": SENDER_EMAIL,
+                "to": [RECIPIENT_EMAIL],
+                "subject": f"New Contact Form: {contact_obj.name} - {contact_obj.destination}",
+                "html": html_content
+            }
+            
+            try:
+                await asyncio.to_thread(resend.Emails.send, email_params)
+                logger.info(f"Email sent successfully to {RECIPIENT_EMAIL}")
+            except Exception as e:
+                logger.error(f"Failed to send email: {str(e)}")
+        
     except Exception as e:
         logger.error(f"Error saving contact form: {e}")
         raise HTTPException(status_code=500, detail="Error submitting form")

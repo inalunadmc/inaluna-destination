@@ -30,39 +30,39 @@ const Navigation = () => {
       }`}
       data-testid="main-navigation"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-12">
           <button
             onClick={() => scrollToSection('hero')}
-            className="text-[#F5F2ED] text-lg font-bold hover:text-[#D4C2A1] transition-colors"
+            className="text-[#F5F2ED] text-base font-bold hover:text-[#D4C2A1] transition-colors"
             data-testid="nav-home-btn"
           >
             {t('nav_home')}
           </button>
           <button
             onClick={() => scrollToSection('who-we-are')}
-            className="text-[#F5F2ED] text-lg hover:text-[#D4C2A1] transition-colors hidden md:block"
+            className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
             data-testid="nav-about-btn"
           >
             {t('nav_about')}
           </button>
           <button
             onClick={() => scrollToSection('colombia')}
-            className="text-[#F5F2ED] text-lg hover:text-[#D4C2A1] transition-colors hidden md:block"
+            className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
             data-testid="nav-destinations-btn"
           >
             {t('nav_destinations')}
           </button>
           <button
             onClick={() => scrollToSection('highlights')}
-            className="text-[#F5F2ED] text-lg hover:text-[#D4C2A1] transition-colors hidden md:block"
+            className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
             data-testid="nav-experiences-btn"
           >
             {t('nav_experiences')}
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className="text-[#F5F2ED] text-lg hover:text-[#D4C2A1] transition-colors hidden md:block"
+            className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
             data-testid="nav-contact-btn"
           >
             {t('nav_contact')}
@@ -74,8 +74,8 @@ const Navigation = () => {
           className="flex items-center gap-2 text-[#F5F2ED] hover:text-[#D4C2A1] transition-colors"
           data-testid="language-toggle-btn"
         >
-          <Globe size={20} />
-          <span className="text-lg font-bold uppercase">{language}</span>
+          <Globe size={18} />
+          <span className="text-base font-bold uppercase">{language}</span>
         </button>
       </div>
     </nav>

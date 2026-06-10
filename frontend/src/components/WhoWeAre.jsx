@@ -29,11 +29,14 @@ const WhoWeAre = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-5xl text-[#1A2B3C] leading-relaxed"
         >
-          We were born from the union of two worlds:{' '}
-          <span className="italic">precision</span> and{' '}
-          <span className="italic">intuition</span>. We design journeys where structure meets{' '}
-          <span className="italic">soul</span>, creating experiences that go beyond travel. This is not tourism.{' '}
-          <span className="font-bold">It is a curated experience.</span>
+          {t('who_we_are_text_part1')}{' '}
+          <span className="italic">{t('who_we_are_precision')}</span>{' '}
+          {t('who_we_are_and')}{' '}
+          <span className="italic">{t('who_we_are_intuition')}</span>
+          {t('who_we_are_text_part2')}{' '}
+          <span className="italic">{t('who_we_are_soul')}</span>
+          {t('who_we_are_text_part3')}{' '}
+          <span className="font-bold">{t('who_we_are_text_emphasis')}</span>
         </motion.p>
       </div>
     </section>
