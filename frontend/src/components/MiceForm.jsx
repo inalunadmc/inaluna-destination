@@ -122,7 +122,10 @@ ${formData.q9_additional || 'None provided'}
         q6_level: '', q7_considerations: '', q7_details: '',
         q8_objective: '', q8_other: '', q9_additional: ''
       });
-      window.scrollTo({ top: document.getElementById('contact').offsetTop, behavior: 'smooth' });
+      const overlay = document.querySelector('[data-testid="contact-overlay"]');
+      if (overlay) {
+        overlay.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
       setStatus('error');

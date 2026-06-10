@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useContactOverlay } from '../context/ContactOverlayContext';
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
+  const { openContact } = useContactOverlay();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +63,7 @@ const Navigation = () => {
             {t('nav_experiences')}
           </button>
           <button
-            onClick={() => scrollToSection('contact')}
+            onClick={openContact}
             className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
             data-testid="nav-contact-btn"
           >

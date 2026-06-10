@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { useContactOverlay } from '../context/ContactOverlayContext';
 
 const heroImages = [
   'https://images.unsplash.com/photo-1583531352515-8884af319dc1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwxfHxDYXJ0YWdlbmElMjBDb2xvbWJpYSUyMGNvbG9yZnVsJTIwY29sb25pYWwlMjBidWlsZGluZ3MlMjBzdW5zZXQlMjBsdXh1cnl8ZW58MHx8fHwxNzgxMTE4ODkxfDA&ixlib=rb-4.1.0&q=85',
@@ -12,6 +13,7 @@ const heroImages = [
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const { t } = useLanguage();
+  const { openContact } = useContactOverlay();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,13 +21,6 @@ const Hero = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section id="hero" className="h-screen w-full relative flex flex-col items-center justify-center text-center overflow-hidden" data-testid="hero-section">
@@ -72,7 +67,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
-          onClick={scrollToContact}
+          onClick={openContact}
           className="bg-[#1A2B3C] text-[#F5F2ED] px-12 py-5 text-xl font-bold tracking-wider uppercase transition-all duration-300 hover:bg-[#D4C2A1] hover:text-[#1A2B3C] hover:scale-105"
           data-testid="hero-cta-btn"
         >
