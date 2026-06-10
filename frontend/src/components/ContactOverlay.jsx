@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useContactOverlay } from '../context/ContactOverlayContext';
@@ -8,6 +8,16 @@ import MiceForm from './MiceForm';
 const ContactOverlay = () => {
   const { isOpen, closeContact } = useContactOverlay();
   const { t } = useLanguage();
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        closeContact();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, closeContact]);
 
   return (
     <AnimatePresence>
@@ -21,17 +31,19 @@ const ContactOverlay = () => {
           data-testid="contact-overlay"
         >
           <div className="sticky top-0 z-10 bg-[#1A2B3C]/95 backdrop-blur-md border-b border-[#F5F2ED]/15">
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-4 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-5 md:py-6 flex items-center justify-between">
               <img
                 src="https://customer-assets.emergentagent.com/job_ee79464f-2c92-4466-93ae-47cdcabd0920/artifacts/it9pmzym_Logo%20blanco.png"
                 alt="Inaluna Destination"
-                className="h-10 md:h-12"
+                className="h-20 md:h-28 w-auto"
+                data-testid="contact-overlay-logo"
               />
               <button
                 onClick={closeContact}
                 className="text-[#F5F2ED] hover:text-[#D4C2A1] transition-colors flex items-center gap-2"
                 data-testid="contact-overlay-close-btn"
-                aria-label="Close"
+                aria-label="Close (ESC)"
+                title="Close (ESC)"
               >
                 <span className="hidden md:inline text-base uppercase tracking-wider">Close</span>
                 <X size={28} />
