@@ -4,6 +4,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import { ContactOverlayProvider } from './context/ContactOverlayContext';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
+import OurEssence from './components/OurEssence';
 import WhoWeAre from './components/WhoWeAre';
 import Colombia from './components/Colombia';
 import CuratedHighlights from './components/CuratedHighlights';
@@ -17,6 +18,7 @@ function App() {
         <div className="App">
           <Navigation />
           <Hero />
+          <OurEssence />
           <WhoWeAre />
           <Colombia />
           <CuratedHighlights />
