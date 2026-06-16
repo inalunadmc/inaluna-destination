@@ -74,7 +74,7 @@ const Footer = () => {
             </h4>
             <div className="flex gap-5">
               <a 
-                href="https://instagram.com/inalunadmc" 
+                href="https://www.instagram.com/inalunadmc/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#F5F2ED] hover:text-[#D4C2A1] transition-colors" 
@@ -84,7 +84,7 @@ const Footer = () => {
                 <Instagram size={26} />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/company/129753951/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#F5F2ED] hover:text-[#D4C2A1] transition-colors" 

@@ -112,7 +112,26 @@ ${formData.q9_additional || 'None provided'}
         company: formData.company,
         email: formData.email,
         destination: formData.q3_destination || formData.q2_organization_type,
-        message: messageBody
+        message: messageBody,
+        mice_data: {
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          experience_type: formData.q1_experience_type,
+          organization_type: formData.q2_organization_type,
+          organization_type_other: formData.q2_other,
+          destination_of_interest: formData.q3_destination,
+          timing: formData.q4_timing,
+          approximate_dates: formData.q4_dates,
+          group_size: formData.q5_group_size,
+          experience_level: formData.q6_level,
+          important_considerations: formData.q7_considerations,
+          considerations_details: formData.q7_details,
+          main_objective: formData.q8_objective,
+          main_objective_other: formData.q8_other,
+          additional_details: formData.q9_additional
+        }
       });
       setStatus('success');
       setFormData({

@@ -5,6 +5,8 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 import asyncio
+import json
+import httpx
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List
@@ -23,6 +25,11 @@ db = client[os.environ['DB_NAME']]
 resend.api_key = os.environ.get('RESEND_API_KEY', '')
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
 RECIPIENT_EMAIL = os.environ.get('RECIPIENT_EMAIL', 'info@inalunadmc.com')
+
+MSFORMS_ID = os.environ.get(
+    'MSFORMS_ID',
+    'uhbxgkSB_0ScJFgOSdG4VdOFARxGL3dHpHUYy54yASZUQzJEOFZJVkZHOTZLQUoyN00yMFo5MDlWNi4u'
+)
 
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
@@ -56,6 +63,55 @@ class ContactFormCreate(BaseModel):
     email: EmailStr
     destination: str
     message: str
+    mice_data: dict | None = None
+
+
+async def forward_to_microsoft_forms(payload: dict) -> bool:
+    """Best-effort POST to the public Microsoft Form anonymous submission endpoint.
+
+    Note: Microsoft Forms typically requires an authenticated session and per-question
+    IDs that are only obtainable by inspecting the form. This function attempts
+    a generic anonymous submission. If it fails, the rest of the contact flow
+    (MongoDB + Resend) still succeeds.
+    """
+    if not MSFORMS_ID:
+        return False
+
+    answers = [
+        {"questionId": f"r{idx}", "answer1Text": str(value)}
+        for idx, (key, value) in enumerate(payload.items(), start=1)
+        if value
+    ]
+    now = datetime.now(timezone.utc).isoformat()
+    body = {
+        "startDate": now,
+        "submitDate": now,
+        "answers": json.dumps(answers, ensure_ascii=False),
+    }
+
+    endpoint = (
+        f"https://forms.cloud.microsoft/formapi/api/forms"
+        f"('{MSFORMS_ID}')/AnonymousResponses"
+    )
+    headers = {
+        "Content-Type": "application/json;odata.metadata=minimal",
+        "Accept": "application/json;odata.metadata=minimal",
+        "User-Agent": "Mozilla/5.0 (compatible; InalunaDMC-FormForwarder/1.0)",
+    }
+    try:
+        async with httpx.AsyncClient(timeout=15.0) as http_client:
+            response = await http_client.post(endpoint, json=body, headers=headers)
+            if response.status_code in (200, 201, 204):
+                logger.info("Forwarded to Microsoft Forms (status %s)", response.status_code)
+                return True
+            logger.warning(
+                "Microsoft Forms responded with %s: %s",
+                response.status_code, response.text[:300]
+            )
+            return False
+    except Exception as exc:
+        logger.warning("Microsoft Forms forwarding failed: %s", exc)
+        return False
 
 
 @api_router.get("/")
@@ -90,6 +146,15 @@ async def create_contact(input: ContactFormCreate):
     try:
         await db.contact_submissions.insert_one(doc)
         logger.info(f"Contact form submitted: {contact_obj.email}")
+
+        msforms_payload = (input.mice_data if input.mice_data else {
+            "name": contact_obj.name,
+            "company": contact_obj.company,
+            "email": contact_obj.email,
+            "destination": contact_obj.destination,
+            "message": contact_obj.message,
+        })
+        asyncio.create_task(forward_to_microsoft_forms(msforms_payload))
         
         if resend.api_key:
             html_content = f"""
