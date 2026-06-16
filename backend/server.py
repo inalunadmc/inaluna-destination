@@ -5,8 +5,6 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 import asyncio
-import json
-import httpx
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List
@@ -25,11 +23,6 @@ db = client[os.environ['DB_NAME']]
 resend.api_key = os.environ.get('RESEND_API_KEY', '')
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
 RECIPIENT_EMAIL = os.environ.get('RECIPIENT_EMAIL', 'info@inalunadmc.com')
-
-MSFORMS_ID = os.environ.get(
-    'MSFORMS_ID',
-    'uhbxgkSB_0ScJFgOSdG4VdOFARxGL3dHpHUYy54yASZUQzJEOFZJVkZHOTZLQUoyN00yMFo5MDlWNi4u'
-)
 
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
@@ -146,15 +139,6 @@ async def create_contact(input: ContactFormCreate):
     try:
         await db.contact_submissions.insert_one(doc)
         logger.info(f"Contact form submitted: {contact_obj.email}")
-
-        msforms_payload = (input.mice_data if input.mice_data else {
-            "name": contact_obj.name,
-            "company": contact_obj.company,
-            "email": contact_obj.email,
-            "destination": contact_obj.destination,
-            "message": contact_obj.message,
-        })
-        asyncio.create_task(forward_to_microsoft_forms(msforms_payload))
         
         if resend.api_key:
             html_content = f"""
