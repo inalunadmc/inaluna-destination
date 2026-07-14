@@ -6,6 +6,7 @@ import { ContactOverlayProvider } from './context/ContactOverlayContext';
 import HomePage from './pages/HomePage';
 import ColombiaPage from './pages/ColombiaPage';
 import ContactOverlay from './components/ContactOverlay';
+import BackToTop from './components/BackToTop';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/colombia" element={<ColombiaPage />} />
           </Routes>
           <ContactOverlay />
+          <BackToTop />
         </BrowserRouter>
       </ContactOverlayProvider>
     </LanguageProvider>
