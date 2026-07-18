@@ -2,9 +2,16 @@
 <html lang="en">
     <head>
         <script>
-            window.REACT_APP_API_URL = "https://inalunadmc.com";
-            window.NEXT_PUBLIC_API_URL = "https://inalunadmc.com";
-        </script>
+  // Inyección global para scripts externos y librerías directas
+  window.REACT_APP_API_URL = "https://inalunadmc.com";
+  window.NEXT_PUBLIC_API_URL = "https://inalunadmc.com";
+
+  // Emulación del entorno de compilación para que el JS de React lo lea
+  window.process = window.process || {};
+  window.process.env = window.process.env || {};
+  window.process.env.REACT_APP_API_URL = "https://inalunadmc.com";
+  window.process.env.NEXT_PUBLIC_API_URL = "https://inalunadmc.com";
+</script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
