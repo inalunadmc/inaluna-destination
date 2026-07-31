@@ -107,11 +107,11 @@ ${formData.q9_additional || 'None provided'}
     `.trim();
 
     try {
-      await axios.post(`${API}/contact`, {
+      const response = await axios.post(`${API}/contact`, {
         name: formData.name,
         company: formData.company,
         email: formData.email,
-        destination: formData.q3_destination || formData.q2_organization_type,
+        destination: formData.q3_destination || formData.q2_organization_type || 'Not specified',
         message: messageBody,
         mice_data: {
           name: formData.name,
@@ -133,6 +133,12 @@ ${formData.q9_additional || 'None provided'}
           additional_details: formData.q9_additional
         }
       });
+
+      // Only treat 2xx as success (axios throws on non-2xx by default,
+      // but we double-check to avoid false positives from proxies).
+      if (response.status < 200 || response.status >= 300) {
+        throw new Error(`Unexpected HTTP status: ${response.status}`);
+      }
       setStatus('success');
       setFormData({
         name: '', company: '', email: '', phone: '',
@@ -146,7 +152,14 @@ ${formData.q9_additional || 'None provided'}
         overlay.scrollTo({ top: 0, behavior: 'smooth' });
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      // Expose the real cause in the browser console for easy debugging
+      const detail =
+        error.response
+          ? `HTTP ${error.response.status} — ${JSON.stringify(error.response.data)}`
+          : error.request
+          ? `Network error / CORS — no response received. Check REACT_APP_BACKEND_URL: ${API}`
+          : error.message;
+      console.error('[MiceForm] Contact submit failed:', detail, error);
       setStatus('error');
     } finally {
       setIsSubmitting(false);
