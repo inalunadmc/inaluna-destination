@@ -86,3 +86,8 @@ android-sdk/
 credentials.json
 *.key
 .credentials
+
+# Exceptions: frontend .env files MUST be committed so Hostinger's build
+# can bake REACT_APP_BACKEND_URL into the compiled bundle.
+!frontend/.env
+!frontend/.env.production
