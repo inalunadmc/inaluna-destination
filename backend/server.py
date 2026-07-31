@@ -139,9 +139,20 @@ async def create_contact(input: ContactFormCreate):
     try:
         await db.contact_submissions.insert_one(doc)
         logger.info(f"Contact form submitted: {contact_obj.email}")
-        
-        if resend.api_key:
-            html_content = f"""
+    except Exception as e:
+        logger.error(f"Error saving contact form to MongoDB: {e}")
+        raise HTTPException(status_code=500, detail="Error submitting form")
+
+    # Email notification is best-effort: never fail the user's submission
+    # if the email cannot be sent (e.g. invalid Resend API key).
+    if not resend.api_key or resend.api_key.startswith('re_123'):
+        logger.warning(
+            "RESEND_API_KEY is missing or placeholder — skipping email notification. "
+            "Set a valid key in backend/.env to enable email delivery."
+        )
+        return contact_obj
+
+    html_content = f"""
             <html>
                 <body style="font-family: 'Cormorant Garamond', serif; color: #1A2B3C; background-color: #F5F2ED; padding: 40px;">
                     <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 40px; border: 1px solid #D4C2A1;">
@@ -167,24 +178,28 @@ async def create_contact(input: ContactFormCreate):
                 </body>
             </html>
             """
-            
-            email_params = {
-                "from": SENDER_EMAIL,
-                "to": [RECIPIENT_EMAIL],
-                "subject": f"New Contact Form: {contact_obj.name} - {contact_obj.destination}",
-                "html": html_content
-            }
-            
-            try:
-                await asyncio.to_thread(resend.Emails.send, email_params)
-                logger.info(f"Email sent successfully to {RECIPIENT_EMAIL}")
-            except Exception as e:
-                logger.error(f"Failed to send email: {str(e)}")
-        
+
+    email_params = {
+        "from": SENDER_EMAIL,
+        "to": [RECIPIENT_EMAIL],
+        "subject": f"New Contact Form: {contact_obj.name} - {contact_obj.destination}",
+        "html": html_content
+    }
+
+    try:
+        await asyncio.to_thread(resend.Emails.send, email_params)
+        logger.info(f"Email sent successfully to {RECIPIENT_EMAIL}")
     except Exception as e:
-        logger.error(f"Error saving contact form: {e}")
-        raise HTTPException(status_code=500, detail="Error submitting form")
-    
+        err_msg = str(e)
+        if 'api key' in err_msg.lower() or 'unauthorized' in err_msg.lower() or 'invalid' in err_msg.lower():
+            logger.error(
+                f"RESEND API KEY IS INVALID OR EXPIRED. Generate a new key at "
+                f"https://resend.com/api-keys and update RESEND_API_KEY in backend/.env. "
+                f"Details: {err_msg}"
+            )
+        else:
+            logger.error(f"Failed to send email via Resend: {err_msg}")
+
     return contact_obj
 
 @api_router.get("/contact", response_model=List[ContactForm])
