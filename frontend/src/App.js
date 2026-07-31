@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import ColombiaPage from './pages/ColombiaPage';
 import ContactOverlay from './components/ContactOverlay';
 import BackToTop from './components/BackToTop';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </Routes>
           <ContactOverlay />
           <BackToTop />
+          <WhatsAppButton />
         </BrowserRouter>
       </ContactOverlayProvider>
     </LanguageProvider>
