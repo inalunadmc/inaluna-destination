@@ -84,6 +84,40 @@ export const cityHighlights = {
           text: 'A refined space for shared moments. Where design, nature and atmosphere come together effortlessly, creating an environment defined by privacy, intention and quiet elegance.'
         }
       ]
+    },
+    orinoquia: {
+      id: 'orinoquia',
+      title: 'Orinoquía',
+      description: 'The vast eastern plains of Colombia, where endless horizons meet living tradition. Golden sunsets over the llanos, llanero horsemanship and rustic cattle ranches, the Orinoquía offers an untamed, soulful side of Colombia.',
+      highlights: [
+        {
+          title: 'Llanero Sunset Ride',
+          image: 'https://images.pexels.com/photos/572861/pexels-photo-572861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          text: "A private horseback journey through the open savanna at golden hour, guided by traditional llaneros. A grounded encounter with Colombia's cowboy heritage, where silence, space and craft merge into one moment."
+        },
+        {
+          title: 'Hato Retreat',
+          image: 'https://images.pexels.com/photos/1687067/pexels-photo-1687067.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          text: 'An exclusive stay at a working hato, where ancestral ranch life meets refined hospitality. Slow mornings, native wildlife encounters and open-fire dining under a sky of countless stars.'
+        }
+      ]
+    },
+    amazonia: {
+      id: 'amazonia',
+      title: 'Amazonía',
+      description: 'The pulse of the rainforest, where every sound and shadow tells a story. Private navigations along ancient rivers and encounters with indigenous communities, the Colombian Amazon reveals depth, mystery and living heritage.',
+      highlights: [
+        {
+          title: 'River Expedition',
+          image: 'https://images.pexels.com/photos/975771/pexels-photo-975771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          text: 'A private expedition through hidden Amazonian tributaries, guided by local naturalists. A sensory immersion into the largest rainforest on Earth, where every meander opens onto a new discovery.'
+        },
+        {
+          title: 'Indigenous Encounter',
+          image: 'https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          text: 'A respectful, curated visit with an indigenous community, where ancestral knowledge, ritual and craft are shared with intention. A rare moment of human connection at the heart of the jungle.'
+        }
+      ]
     }
   },
   es: {
@@ -169,6 +203,40 @@ export const cityHighlights = {
           title: 'Orquideorama',
           image: 'https://images.unsplash.com/photo-1599543359278-76676745f1e9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwxfHxvcnF1aWRlb3JhbWElMjBNZWRlbGxpbiUyMGJvdGFuaWNhbCUyMGdhcmRlbiUyMGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3ODAwNzA5MTJ8MA&ixlib=rb-4.1.0&q=85',
           text: 'Un espacio refinado para momentos compartidos. Donde el diseño, la naturaleza y la atmósfera se unen sin esfuerzo, creando un entorno definido por la privacidad, la intención y la elegancia silenciosa.'
+        }
+      ]
+    },
+    orinoquia: {
+      id: 'orinoquia',
+      title: 'Orinoquía',
+      description: 'Los vastos llanos orientales de Colombia, donde el horizonte se funde con la tradición viva. Atardeceres dorados sobre la sabana, jinetes llaneros y hatos ancestrales, la Orinoquía revela un lado indómito y profundamente auténtico de Colombia.',
+      highlights: [
+        {
+          title: 'Cabalgata Llanera al Atardecer',
+          image: 'https://images.pexels.com/photos/572861/pexels-photo-572861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          text: 'Un recorrido privado a caballo por la sabana abierta a la hora dorada, guiado por llaneros tradicionales. Un encuentro genuino con el patrimonio vaquero colombiano, donde el silencio, el espacio y el oficio se convierten en un solo momento.'
+        },
+        {
+          title: 'Retiro en Hato',
+          image: 'https://images.pexels.com/photos/1687067/pexels-photo-1687067.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          text: 'Una estadía exclusiva en un hato en funcionamiento, donde la vida ancestral se une a una hospitalidad refinada. Mañanas pausadas, encuentros con la fauna nativa y cenas al fuego bajo un cielo colmado de estrellas.'
+        }
+      ]
+    },
+    amazonia: {
+      id: 'amazonia',
+      title: 'Amazonía',
+      description: 'El pulso de la selva, donde cada sonido y cada sombra cuentan una historia. Navegaciones privadas por ríos ancestrales y encuentros con comunidades indígenas, la Amazonía colombiana revela profundidad, misterio y patrimonio vivo.',
+      highlights: [
+        {
+          title: 'Expedición Fluvial',
+          image: 'https://images.pexels.com/photos/975771/pexels-photo-975771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          text: 'Una expedición privada por afluentes ocultos de la Amazonía, guiada por naturalistas locales. Una inmersión sensorial en la selva más grande del planeta, donde cada meandro revela un nuevo descubrimiento.'
+        },
+        {
+          title: 'Encuentro Indígena',
+          image: 'https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          text: 'Una visita curada y respetuosa a una comunidad indígena, donde el conocimiento ancestral, el ritual y la artesanía se comparten con intención. Un momento excepcional de conexión humana en el corazón de la selva.'
         }
       ]
     }

@@ -43,8 +43,9 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Map Update**: Replaced placeholder map SVG in `MapCard.jsx` with new watercolor illustration `inaluna-colombia-map.jpg` (custom asset with embedded Inaluna DMC branding). Navy card background, "OUR MAP" header, and gold line preserved.
-- **Hostinger Fallback**: Hardcoded `REACT_APP_BACKEND_URL` fallback in `MiceForm.jsx` for production build compatibility.
-- **Video 403 Fix**: Replaced Pexels MP4 hotlinks with static images to prevent 403 Forbidden errors in production.
+- **Interactive Bilingual Map (v2)**: Refactored `MapCard.jsx` to full-box layout (aspect edge-to-edge via `object-cover object-top`). Bottom baked-in text now covered by a bilingual overlay ("Inaluna DMC - Tu Puerta a Colombia" / "Your Door to Colombia") managed via i18n key `map_footer_tagline`. Five interactive hover regions (Caribe → Cartagena, Pacífico → Cali, Andina → Bogotá, Orinoquía → Orinoquía, Amazonía → Amazonía) open the CityModal with a small 220ms hover delay. Added new city entries `orinoquia` and `amazonia` in `cityHighlights.js` (EN/ES) with 2 curated highlights each.
+- **Map Update**: Replaced placeholder map SVG with new watercolor illustration `inaluna-colombia-map.jpg`.
+- **Hostinger Fallback**: Hardcoded `REACT_APP_BACKEND_URL` fallback in `MiceForm.jsx`.
+- **Video 403 Fix**: Replaced Pexels MP4 hotlinks with static images.
 
 ## Completed: Feb 2026

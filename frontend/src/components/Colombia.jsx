@@ -112,7 +112,7 @@ const Colombia = ({ hideHeading = false }) => {
                 </div>
               </motion.div>
             ))}
-            <MapCard index={destinations.length} />
+            <MapCard index={destinations.length} onCityOpen={handleCityClick} />
           </div>
 
           <ColombiaMap />
