@@ -26,9 +26,9 @@ const MapCard = ({ index }) => {
       </p>
 
       <img
-        src="/colombia-map.svg"
-        alt="Colombia map"
-        className="relative w-32 md:w-36 h-40 object-contain mb-6 transition-transform duration-700 group-hover:scale-110 z-10"
+        src="/inaluna-colombia-map.jpg"
+        alt="Inaluna DMC - Colombia watercolor map"
+        className="relative w-auto h-56 md:h-60 object-contain mb-6 transition-transform duration-700 group-hover:scale-105 z-10"
         data-testid="colombia-map-image"
       />
 

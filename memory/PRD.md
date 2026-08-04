@@ -42,4 +42,9 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add Google Analytics
 - Add SEO meta tags
 
+## Recent Updates (Feb 2026)
+- **Map Update**: Replaced placeholder map SVG in `MapCard.jsx` with new watercolor illustration `inaluna-colombia-map.jpg` (custom asset with embedded Inaluna DMC branding). Navy card background, "OUR MAP" header, and gold line preserved.
+- **Hostinger Fallback**: Hardcoded `REACT_APP_BACKEND_URL` fallback in `MiceForm.jsx` for production build compatibility.
+- **Video 403 Fix**: Replaced Pexels MP4 hotlinks with static images to prevent 403 Forbidden errors in production.
+
 ## Completed: Feb 2026
