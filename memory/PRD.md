@@ -43,7 +43,7 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Map Expanded Modal**: New `MapExpandedModal.jsx`. Clicking the MapCard opens a large centered modal with the full watercolor map, 5 interactive hover zones (Caribe→Cartagena, Pacífico→Cali, Andina x3 → Bogotá/Medellín/Coffee) and bilingual footer tagline. Closes via (a) X button top-right, (b) backdrop click, (c) Esc key. Hover inside shows the compact `CityPreviewModal`; `VER MÁS` closes expanded + opens curated `CityModal`. The small `MapCard` is now a `<button>` with a `Maximize` badge indicating interactivity, and no longer owns the hover zones directly.
-- **Cartagena v6**: Set to Unsplash `photo-1583531352515-8884af319dc1` (vibrant Getsemaní colonial street).
+- **Map v4 — San Andrés y Providencia + Aspect-Precise**: New map image `inaluna-colombia-map-v2.jpg` (875x1216) with San Andrés y Providencia inset at top-left. MapCard uses `object-contain` so the full map is centered and visible without deformation inside the navy frame. MapExpandedModal uses `aspect-[875/1216]` so hover coordinates align precisely with each region. Hover zones repositioned: Caribe (top, shifted right), Pacífico (bottom-left under inset), Andina x3 (Medellín, Coffee, Bogotá). Solid navy strip at bottom covers baked-in tagline so bilingual overlay (`map_footer_tagline`) is the only visible one.
+- **Map Expanded Modal**: X / backdrop click / Esc close. Hover opens `CityPreviewModal` → VER MÁS opens curated `CityModal`.
 
 ## Completed: Feb 2026
