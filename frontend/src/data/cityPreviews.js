@@ -18,7 +18,7 @@ export const cityPreviews = {
     cartagena: {
       id: 'cartagena',
       title: 'Cartagena',
-      previewImage: 'https://plus.unsplash.com/premium_photo-1754251343401-8ea5ca4cf5fe?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.unsplash.com/photo-1583531352515-8884af319dc1?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'A timeless walled city where Caribbean charm and colonial elegance meet.',
       pointsOfInterest: [
         'Walled Old City',
@@ -85,7 +85,7 @@ export const cityPreviews = {
     cartagena: {
       id: 'cartagena',
       title: 'Cartagena',
-      previewImage: 'https://plus.unsplash.com/premium_photo-1754251343401-8ea5ca4cf5fe?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.unsplash.com/photo-1583531352515-8884af319dc1?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'Una ciudad amurallada atemporal donde el encanto caribeño se une a la elegancia colonial.',
       pointsOfInterest: [
         'Ciudad Amurallada',
