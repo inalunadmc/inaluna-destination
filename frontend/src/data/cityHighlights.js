@@ -7,12 +7,12 @@ export const cityHighlights = {
       highlights: [
         {
           title: 'Tejo Experience',
-          image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=80',
+          image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80',
           text: "A private introduction to Colombia's most authentic tradition, through an exclusive tejo encounter in a curated setting. An immersive moment that blends culture, interaction and local heritage."
         },
         {
           title: 'Salt Cathedral',
-          image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1000&q=80',
+          image: 'https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1000&q=80',
           text: "A private visit to the Salt Cathedral, one of Colombia's most extraordinary landmarks. An immersive journey beneath the surface, transformed into a refined cultural experience."
         }
       ]
@@ -128,12 +128,12 @@ export const cityHighlights = {
       highlights: [
         {
           title: 'Experiencia de Tejo',
-          image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=80',
+          image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80',
           text: 'Una introducción privada a la tradición más auténtica de Colombia, a través de un encuentro exclusivo de tejo en un entorno curado. Un momento inmersivo que combina cultura, interacción y patrimonio local.'
         },
         {
           title: 'Catedral de Sal',
-          image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1000&q=80',
+          image: 'https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1000&q=80',
           text: 'Una visita privada a la Catedral de Sal, uno de los lugares más extraordinarios de Colombia. Un viaje inmersivo bajo la superficie, transformado en una experiencia cultural refinada.'
         }
       ]
