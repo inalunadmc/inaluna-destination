@@ -6,22 +6,22 @@ import CityPreviewModal from './CityPreviewModal';
 
 /**
  * Full-screen expanded map modal.
- * Keeps the actual image aspect ratio (875x1216) so hover coordinates
- * map precisely to each region of the watercolor map (San Andrés inset
- * at top-left, Caribbean to the right, Pacific/Andina/Amazon below).
- * Closes via X, backdrop click, or Esc.
+ * - Clean image, no baked-in X or text.
+ * - Container uses the actual image aspect so hovers map precisely.
+ * - Close button floats OUTSIDE the image, on the dark backdrop.
+ * - Also closes via Esc and backdrop click.
  */
 const REGIONS = [
-  // Caribe coast (right of San Andrés inset) → Cartagena
-  { id: 'caribe', cityId: 'cartagena', style: { top: '5%', left: '25%', width: '70%', height: '18%' } },
-  // Pacific coast (bottom-left, below San Andrés inset) → Cali
-  { id: 'pacifico', cityId: 'cali', style: { top: '55%', left: '3%', width: '20%', height: '26%' } },
-  // Andina — Medellín (northwest Andes)
-  { id: 'andina-medellin', cityId: 'medellin', style: { top: '28%', left: '24%', width: '18%', height: '18%' } },
-  // Andina — Coffee Region (west-central Andes)
-  { id: 'andina-coffee', cityId: 'coffee', style: { top: '46%', left: '23%', width: '16%', height: '14%' } },
+  // Caribe (north coast, right of inset) → Cartagena
+  { id: 'caribe', cityId: 'cartagena', style: { top: '5%', left: '32%', width: '55%', height: '26%' } },
+  // Pacific coast (southwest) → Cali
+  { id: 'pacifico', cityId: 'cali', style: { top: '42%', left: '15%', width: '18%', height: '28%' } },
+  // Andina — Medellín (NW Andes)
+  { id: 'andina-medellin', cityId: 'medellin', style: { top: '35%', left: '30%', width: '15%', height: '15%' } },
+  // Andina — Coffee Region (central-west Andes)
+  { id: 'andina-coffee', cityId: 'coffee', style: { top: '50%', left: '31%', width: '14%', height: '13%' } },
   // Andina — Bogotá (central-east Andes)
-  { id: 'andina-bogota', cityId: 'bogota', style: { top: '45%', left: '40%', width: '18%', height: '20%' } },
+  { id: 'andina-bogota', cityId: 'bogota', style: { top: '48%', left: '45%', width: '15%', height: '17%' } },
 ];
 
 const REGION_LABELS = {
@@ -38,7 +38,6 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
   const [previewCityId, setPreviewCityId] = useState(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
-  // Esc key: close preview first (if open), else close modal.
   useEffect(() => {
     if (!isOpen) return undefined;
     const onKey = (e) => {
@@ -55,7 +54,6 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
     return () => window.removeEventListener('keydown', onKey);
   }, [isOpen, isPreviewOpen, onClose]);
 
-  // Lock body scroll while open
   useEffect(() => {
     if (!isOpen) return undefined;
     const prev = document.body.style.overflow;
@@ -73,9 +71,7 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
     }, 220);
   };
 
-  const cancelPending = () => {
-    clearTimeout(hoverTimerRef.current);
-  };
+  const cancelPending = () => clearTimeout(hoverTimerRef.current);
 
   const handleRegionClick = (cityId) => {
     clearTimeout(hoverTimerRef.current);
@@ -113,7 +109,7 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
             className="fixed inset-0 z-40 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-8"
             data-testid="map-expanded-backdrop"
           >
-            {/* Floating close button — positioned OUTSIDE the image, on the dark backdrop */}
+            {/* Floating close button OUTSIDE the image, on the dark backdrop */}
             <button
               onClick={onClose}
               className="fixed top-6 right-6 z-50 text-[#F5F2ED] bg-[#1A2B3C]/90 hover:bg-[#D4C2A1] hover:text-[#1A2B3C] transition-all duration-300 rounded-full p-3 shadow-xl border border-[#D4C2A1]/30 backdrop-blur-sm cursor-pointer"
@@ -122,28 +118,23 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
             >
               <X size={22} />
             </button>
+
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-[600px] mx-auto"
+              className="relative w-full max-w-[940px] mx-auto"
               data-testid="map-expanded-container"
             >
-              {/* Container matches image aspect ratio so hover coords align precisely */}
-              <div className="relative aspect-[875/1216] max-h-[85vh] w-full overflow-hidden rounded-2xl bg-[#1A2B3C] shadow-2xl">
+              {/* Container matches image aspect (1093/976) so hovers map precisely */}
+              <div className="relative aspect-[1093/976] max-h-[85vh] w-full overflow-hidden rounded-2xl bg-white shadow-2xl">
                 <img
-                  src="/inaluna-colombia-map-v2.jpg"
+                  src="/inaluna-colombia-map-v3.jpg"
                   alt="Inaluna DMC - Colombia watercolor map with San Andrés y Providencia"
                   className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
                   draggable={false}
                   data-testid="colombia-map-image-expanded"
-                />
-
-                {/* Cream patch over the baked-in close icon in the image corner */}
-                <span
-                  className="absolute top-[1.5%] right-[2.5%] w-[11%] aspect-square bg-white pointer-events-none"
-                  aria-hidden="true"
                 />
 
                 {REGIONS.map((region) => (
@@ -162,11 +153,9 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
                   </button>
                 ))}
 
-                <div
-                  className="absolute inset-x-0 bottom-0 z-20 pt-10 pb-6 px-6 pointer-events-none"
-                  style={{ background: 'linear-gradient(to top, #1A2B3C 78%, rgba(26,43,60,0) 100%)' }}
-                >
-                  <div className="flex flex-col items-center pt-16">
+                {/* Bilingual tagline overlay — clean image has no baked-in text */}
+                <div className="absolute inset-x-0 bottom-0 z-20 px-6 pb-6 pt-16 pointer-events-none bg-gradient-to-t from-[#1A2B3C] via-[#1A2B3C]/85 to-transparent">
+                  <div className="flex flex-col items-center">
                     <p
                       className="text-center text-[#F5F2ED] italic text-base md:text-lg leading-tight"
                       data-testid="map-expanded-tagline"
@@ -178,7 +167,10 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
                 </div>
               </div>
 
-              <p className="mt-4 text-center text-xs md:text-sm uppercase tracking-[0.3em] text-[#D4C2A1]/80">
+              <p
+                className="mt-5 text-center text-xs md:text-sm uppercase tracking-[0.3em] text-[#D4C2A1]/80"
+                data-testid="map-expanded-hint"
+              >
                 {t('hover_hint')}
               </p>
             </motion.div>

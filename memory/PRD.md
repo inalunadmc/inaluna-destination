@@ -43,7 +43,7 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Map v5 — Baked-X Masked + Floating Close**: Hidden the baked-in grey X circle in the top-right of the watercolor image using an absolute white cover `top-[1.5-2%] right-[2.5-3%] w-[10-11%] aspect-square` positioned relative to an inner aspect-ratio-matched wrapper, so the cover aligns precisely with image coords whether in compact MapCard or in the aspect-[875/1216] expanded modal. Removed the invisible hit-area over the X. Added a visible, styled **floating close button** at `fixed top-6 right-6 z-50` on the dark backdrop — outside the image — with navy bg, gold hover, blur border. Esc + backdrop click still close. Modal is now `max-h-[85vh]` so the entire map fits comfortably.
-- **Previous (v4)**: San Andrés y Providencia inset, aspect-precise hovers.
+- **Map v6 — Clean Image**: Replaced the map with the new clean asset `/inaluna-colombia-map-v3.jpg` (1093x976) — no baked-in X, no baked-in English/Spanish tagline, keeps the SAN ANDRÉS Y PROVIDENCIA inset. Removed all white patch covers from `MapCard.jsx` and `MapExpandedModal.jsx`. Container uses `aspect-[1093/976]` + `object-contain` + `max-h-85vh` so the full map renders without crop. Readjusted REGIONS hover coordinates for the new layout (Caribe north, Pacífico southwest, Andina x3 center). Floating close button lives on the dark backdrop (`fixed top-6 right-6 z-50`) — fully outside the image. Esc + backdrop click still work.
+- **Multilenguaje**: `map_footer_tagline` + `hover_hint` dinámicos EN/ES; "SAN ANDRÉS Y PROVIDENCIA" en recuadro queda igual en ambos idiomas (nombre propio).
 
 ## Completed: Feb 2026
