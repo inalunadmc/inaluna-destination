@@ -43,7 +43,7 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Modal Responsive Fix**: Both `CityPreviewModal` and `CityModal` now use `max-h-[90vh]` + `max-w-2xl / max-w-5xl` + `flex flex-col` with a **sticky header** (title + X close stay visible) and **scrollable body** (`overflow-y-auto flex-1`). Image heights capped: `CityPreviewModal` preview at `h-[220px] md:h-[280px]`, `CityModal` highlight images at `max-h-[300px] h-auto object-cover`. Both modals fit comfortably on 720p viewports without content being cut off.
-- **Previous (v6)**: Clean map asset `/inaluna-colombia-map-v3.jpg`.
+- **Gold Scroll Fade**: Both `CityPreviewModal` and `CityModal` now show a subtle gold gradient (`#D4C2A1 55% → 15% → 0%`) at the bottom of the scrollable body when content overflows. The fade is wrapped in a `relative > overflow-hidden` container and uses a React ref + `scrollHeight > clientHeight + 2` + `atBottom` detection via `onScroll`, `onLoad` on images, and `useEffect` on mount. Fades out at 300ms when the user reaches the bottom. 100% CSS-driven after mount, no re-render during scroll.
+- **Modal Responsive Fix**: Both modals use `max-h-[90vh]` + `flex flex-col` with sticky header (title + X stay visible) and scrollable body.
 
 ## Completed: Feb 2026

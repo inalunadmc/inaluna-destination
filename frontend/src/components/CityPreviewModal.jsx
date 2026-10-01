@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
@@ -8,11 +8,29 @@ import { cityPreviews } from '../data/cityPreviews';
  * Compact city preview shown on region hover.
  * Layout: sticky header (title + X) that stays visible, scrollable body
  * (image + points of interest + CTA). Full-screen responsive: max-h-[90vh]
- * so the modal always fits the viewport.
+ * so the modal always fits the viewport. Subtle gold fade indicates more
+ * content below until the user reaches the bottom.
  */
 const CityPreviewModal = ({ cityId, isOpen, onClose, onSeeMore }) => {
   const { language, t } = useLanguage();
   const city = cityId ? cityPreviews[language]?.[cityId] : null;
+  const scrollRef = useRef(null);
+  const [showFade, setShowFade] = useState(false);
+
+  const evaluateFade = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const canScroll = el.scrollHeight > el.clientHeight + 2;
+    const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 10;
+    setShowFade(canScroll && !atBottom);
+  };
+
+  useEffect(() => {
+    if (!isOpen) return;
+    // Give the DOM a moment to render the image before measuring
+    const id = setTimeout(evaluateFade, 60);
+    return () => clearTimeout(id);
+  }, [isOpen, cityId]);
 
   if (!city) return null;
 
@@ -58,60 +76,74 @@ const CityPreviewModal = ({ cityId, isOpen, onClose, onSeeMore }) => {
               </button>
             </div>
 
-            {/* SCROLLABLE BODY */}
-            <div className="overflow-y-auto flex-1">
-              {/* Preview image — compact so it doesn't take the full viewport */}
-              <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden flex-shrink-0">
-                <img
-                  src={city.previewImage}
-                  alt={city.title}
-                  className="w-full h-full object-cover"
-                  data-testid="preview-image"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              </div>
-
-              <div className="px-6 md:px-12 py-8 md:py-10">
-                <h2
-                  className="text-3xl md:text-4xl font-bold text-[#1A2B3C] mb-2 leading-tight"
-                  data-testid="preview-title"
-                >
-                  {city.title}
-                </h2>
-
-                <p className="text-sm md:text-base text-[#4A5D70] italic leading-relaxed mb-6">
-                  {city.shortDescription}
-                </p>
-
-                <div className="mb-8">
-                  <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-[#D4C2A1] font-bold mb-3">
-                    {t('points_of_interest')}
-                  </p>
-                  <ul className="space-y-2" data-testid="preview-points">
-                    {city.pointsOfInterest.map((point, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-base md:text-lg text-[#1A2B3C]"
-                      >
-                        <span className="mt-2 flex-shrink-0">
-                          <span className="block w-2 h-px bg-[#D4C2A1]" />
-                        </span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+            {/* SCROLLABLE BODY wrapped in relative container so gold fade sits above it */}
+            <div className="relative flex-1 overflow-hidden">
+              <div
+                ref={scrollRef}
+                onScroll={evaluateFade}
+                className="h-full overflow-y-auto"
+              >
+                {/* Preview image — compact so it doesn't take the full viewport */}
+                <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden flex-shrink-0">
+                  <img
+                    src={city.previewImage}
+                    alt={city.title}
+                    className="w-full h-full object-cover"
+                    data-testid="preview-image"
+                    onLoad={evaluateFade}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
 
-                <button
-                  type="button"
-                  onClick={handleSeeMore}
-                  className="group inline-flex items-center gap-3 bg-[#1A2B3C] text-[#F5F2ED] px-7 py-3.5 text-xs uppercase tracking-[0.35em] font-semibold hover:bg-[#D4C2A1] hover:text-[#1A2B3C] transition-all duration-300"
-                  data-testid="preview-see-more-btn"
-                >
-                  {t('see_more')}
-                  <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
+                <div className="px-6 md:px-12 py-8 md:py-10">
+                  <h2
+                    className="text-3xl md:text-4xl font-bold text-[#1A2B3C] mb-2 leading-tight"
+                    data-testid="preview-title"
+                  >
+                    {city.title}
+                  </h2>
+
+                  <p className="text-sm md:text-base text-[#4A5D70] italic leading-relaxed mb-6">
+                    {city.shortDescription}
+                  </p>
+
+                  <div className="mb-8">
+                    <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-[#D4C2A1] font-bold mb-3">
+                      {t('points_of_interest')}
+                    </p>
+                    <ul className="space-y-2" data-testid="preview-points">
+                      {city.pointsOfInterest.map((point, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-base md:text-lg text-[#1A2B3C]"
+                        >
+                          <span className="mt-2 flex-shrink-0">
+                            <span className="block w-2 h-px bg-[#D4C2A1]" />
+                          </span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={handleSeeMore}
+                    className="group inline-flex items-center gap-3 bg-[#1A2B3C] text-[#F5F2ED] px-7 py-3.5 text-xs uppercase tracking-[0.35em] font-semibold hover:bg-[#D4C2A1] hover:text-[#1A2B3C] transition-all duration-300"
+                    data-testid="preview-see-more-btn"
+                  >
+                    {t('see_more')}
+                    <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
+                </div>
               </div>
+
+              {/* Subtle gold scroll-indicator fade (hides when user reaches bottom) */}
+              <div
+                className={`pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#D4C2A1]/55 via-[#D4C2A1]/15 to-transparent transition-opacity duration-300 ${showFade ? 'opacity-100' : 'opacity-0'}`}
+                data-testid="preview-scroll-fade"
+                aria-hidden="true"
+              />
             </div>
           </motion.div>
         </motion.div>

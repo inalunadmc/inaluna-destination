@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
@@ -7,6 +7,22 @@ import { cityHighlights } from '../data/cityHighlights';
 const CityModal = ({ cityId, isOpen, onClose }) => {
   const { language, t } = useLanguage();
   const city = cityId ? cityHighlights[language]?.[cityId] : null;
+  const scrollRef = useRef(null);
+  const [showFade, setShowFade] = useState(false);
+
+  const evaluateFade = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const canScroll = el.scrollHeight > el.clientHeight + 2;
+    const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 10;
+    setShowFade(canScroll && !atBottom);
+  };
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const id = setTimeout(evaluateFade, 60);
+    return () => clearTimeout(id);
+  }, [isOpen, cityId]);
 
   if (!city) return null;
 
@@ -50,37 +66,51 @@ const CityModal = ({ cityId, isOpen, onClose }) => {
               </button>
             </div>
 
-            {/* SCROLLABLE BODY */}
-            <div className="overflow-y-auto flex-1 px-8 md:px-16 pt-8 pb-12">
-              <p className="text-lg md:text-xl text-[#4A5D70] mb-10 leading-relaxed">
-                {city.description}
-              </p>
+            {/* SCROLLABLE BODY wrapped in relative container so gold fade sits above it */}
+            <div className="relative flex-1 overflow-hidden">
+              <div
+                ref={scrollRef}
+                onScroll={evaluateFade}
+                className="h-full overflow-y-auto px-8 md:px-16 pt-8 pb-12"
+              >
+                <p className="text-lg md:text-xl text-[#4A5D70] mb-10 leading-relaxed">
+                  {city.description}
+                </p>
 
-              <div className="space-y-10">
-                {city.highlights.map((highlight, index) => (
-                  <div
-                    key={index}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
-                    data-testid={`highlight-${index}`}
-                  >
-                    <div className={index % 2 === 0 ? 'md:order-1' : 'md:order-2'}>
-                      <img
-                        src={highlight.image}
-                        alt={highlight.title}
-                        className="w-full max-h-[300px] h-auto object-cover shadow-lg"
-                      />
+                <div className="space-y-10">
+                  {city.highlights.map((highlight, index) => (
+                    <div
+                      key={index}
+                      className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
+                      data-testid={`highlight-${index}`}
+                    >
+                      <div className={index % 2 === 0 ? 'md:order-1' : 'md:order-2'}>
+                        <img
+                          src={highlight.image}
+                          alt={highlight.title}
+                          className="w-full max-h-[300px] h-auto object-cover shadow-lg"
+                          onLoad={evaluateFade}
+                        />
+                      </div>
+                      <div className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
+                        <h3 className="text-xs md:text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-3">
+                          {t('curated_highlight')} {index + 1}
+                        </h3>
+                        <p className="text-lg md:text-xl text-[#1A2B3C] leading-relaxed">
+                          {highlight.text}
+                        </p>
+                      </div>
                     </div>
-                    <div className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
-                      <h3 className="text-xs md:text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-3">
-                        {t('curated_highlight')} {index + 1}
-                      </h3>
-                      <p className="text-lg md:text-xl text-[#1A2B3C] leading-relaxed">
-                        {highlight.text}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+
+              {/* Subtle gold scroll-indicator fade (hides when user reaches bottom) */}
+              <div
+                className={`pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#D4C2A1]/55 via-[#D4C2A1]/15 to-transparent transition-opacity duration-300 ${showFade ? 'opacity-100' : 'opacity-0'}`}
+                data-testid="citymodal-scroll-fade"
+                aria-hidden="true"
+              />
             </div>
           </motion.div>
         </motion.div>
