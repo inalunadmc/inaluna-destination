@@ -10,25 +10,25 @@ const destinations = [
     id: 'bogota',
     titleKey: 'bogota_title',
     descKey: 'bogota_desc',
-    image: 'https://images.unsplash.com/photo-1633624488546-059750ddde5b?auto=format&fit=crop&w=1600&q=85'
+    image: 'https://images.pexels.com/photos/19675596/pexels-photo-19675596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800'
   },
   {
     id: 'cartagena',
     titleKey: 'cartagena_title',
     descKey: 'cartagena_desc',
-    image: 'https://images.unsplash.com/photo-1633394027858-fff49145f120?auto=format&fit=crop&w=1600&q=85'
+    image: 'https://images.unsplash.com/photo-1759474946083-08fef767181e?auto=format&fit=crop&w=1600&q=85'
   },
   {
     id: 'medellin',
     titleKey: 'medellin_title',
     descKey: 'medellin_desc',
-    image: 'https://images.unsplash.com/photo-1727813658887-abf22d586862?auto=format&fit=crop&w=1600&q=85'
+    image: 'https://images.pexels.com/photos/33437205/pexels-photo-33437205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800'
   },
   {
     id: 'coffee',
     titleKey: 'coffee_title',
     descKey: 'coffee_desc',
-    image: 'https://images.unsplash.com/photo-1693357483341-204143afdeb7?auto=format&fit=crop&w=1600&q=85'
+    image: 'https://images.unsplash.com/photo-1768407683196-521a0764da27?auto=format&fit=crop&w=1600&q=85'
   },
   {
     id: 'cali',

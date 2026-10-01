@@ -5,7 +5,7 @@ export const cityPreviews = {
     bogota: {
       id: 'bogota',
       title: 'Bogotá',
-      previewImage: 'https://images.unsplash.com/photo-1633624488546-059750ddde5b?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.pexels.com/photos/19675596/pexels-photo-19675596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800',
       shortDescription: 'Discover our curated capital experience — where culture, gastronomy and history converge.',
       pointsOfInterest: [
         'Historic La Candelaria',
@@ -18,7 +18,7 @@ export const cityPreviews = {
     cartagena: {
       id: 'cartagena',
       title: 'Cartagena',
-      previewImage: 'https://images.unsplash.com/photo-1633394027858-fff49145f120?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.unsplash.com/photo-1759474946083-08fef767181e?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'A timeless walled city where Caribbean charm and colonial elegance meet.',
       pointsOfInterest: [
         'Walled Old City',
@@ -31,7 +31,7 @@ export const cityPreviews = {
     medellin: {
       id: 'medellin',
       title: 'Medellín',
-      previewImage: 'https://images.unsplash.com/photo-1727813658887-abf22d586862?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.pexels.com/photos/33437205/pexels-photo-33437205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800',
       shortDescription: 'A city defined by innovation, design and urban transformation.',
       pointsOfInterest: [
         'Comuna 13 Urban Art',
@@ -44,7 +44,7 @@ export const cityPreviews = {
     coffee: {
       id: 'coffee',
       title: 'Coffee Region',
-      previewImage: 'https://images.unsplash.com/photo-1693357483341-204143afdeb7?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.unsplash.com/photo-1768407683196-521a0764da27?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'Rolling hills, wax palms and timeless coffee traditions.',
       pointsOfInterest: [
         'Cocora Valley Wax Palms',
@@ -72,7 +72,7 @@ export const cityPreviews = {
     bogota: {
       id: 'bogota',
       title: 'Bogotá',
-      previewImage: 'https://images.unsplash.com/photo-1633624488546-059750ddde5b?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.pexels.com/photos/19675596/pexels-photo-19675596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800',
       shortDescription: 'Descubre nuestra experiencia curada de la capital — donde convergen cultura, gastronomía e historia.',
       pointsOfInterest: [
         'La Candelaria Histórica',
@@ -85,7 +85,7 @@ export const cityPreviews = {
     cartagena: {
       id: 'cartagena',
       title: 'Cartagena',
-      previewImage: 'https://images.unsplash.com/photo-1633394027858-fff49145f120?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.unsplash.com/photo-1759474946083-08fef767181e?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'Una ciudad amurallada atemporal donde el encanto caribeño se une a la elegancia colonial.',
       pointsOfInterest: [
         'Ciudad Amurallada',
@@ -98,7 +98,7 @@ export const cityPreviews = {
     medellin: {
       id: 'medellin',
       title: 'Medellín',
-      previewImage: 'https://images.unsplash.com/photo-1727813658887-abf22d586862?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.pexels.com/photos/33437205/pexels-photo-33437205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800',
       shortDescription: 'Una ciudad definida por la innovación, el diseño y la transformación urbana.',
       pointsOfInterest: [
         'Arte Urbano en Comuna 13',
@@ -111,7 +111,7 @@ export const cityPreviews = {
     coffee: {
       id: 'coffee',
       title: 'Región Cafetera',
-      previewImage: 'https://images.unsplash.com/photo-1693357483341-204143afdeb7?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.unsplash.com/photo-1768407683196-521a0764da27?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'Colinas onduladas, palmas de cera y tradiciones cafeteras atemporales.',
       pointsOfInterest: [
         'Palmas de Cera del Valle del Cocora',
