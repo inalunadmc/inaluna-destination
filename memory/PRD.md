@@ -43,10 +43,7 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Interactive Map v3 (Preview Modal + Deep Modal)**: New two-step flow. Hover any of 5 zones (Caribe→Cartagena, Pacífico→Cali, Andina-Medellín, Andina-Bogotá, Andina-CoffeeRegion) opens a compact `CityPreviewModal` with: navy header `[CITY] HIGHLIGHTS`, preview image, city title, bilingual bulleted points of interest, short description and `VER MÁS / SEE MORE` CTA. CTA closes the preview and opens the deeper existing curated-highlights `CityModal`. Orinoquía & Amazonía intentionally NON-interactive until content is defined.
-- **New Data File**: `/app/frontend/src/data/cityPreviews.js` with `previewImage`, `shortDescription`, `pointsOfInterest` for 5 cities (EN/ES).
-- **New Component**: `/app/frontend/src/components/CityPreviewModal.jsx`.
-- **Bilingual Map Footer**: `map_footer_tagline` key (EN: Your Door to Colombia / ES: Tu Puerta a Colombia).
-- **Map Watercolor Asset**: `/app/frontend/public/inaluna-colombia-map.jpg`.
+- **Destination Cards v2 — Luxury Imagery**: Updated the 5 destination card images in `Colombia.jsx` + preview images in `cityPreviews.js` with high-resolution Unsplash/Pexels photographs aligned to MICE/luxury brand identity: Bogotá (Monserrate panoramic), Cartagena (walled city with garita + Caribbean), Medellín (El Poblado golden hour with mountains), Coffee Region (Valle del Cocora wax palms), Cali (aerial Cristo Rey with city/valley). All use `object-cover` for responsive scaling.
+- **Interactive Map v3**: Hover+preview+SeeMore flow with 5 zones (Caribe, Pacífico, 3x Andina). `CityPreviewModal` component. Orinoquía/Amazonía non-interactive.
 
 ## Completed: Feb 2026
