@@ -78,7 +78,7 @@ const MapCard = ({ index = 0, onCityOpen }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: index * 0.1 }}
-        className="group relative h-96 w-full overflow-hidden bg-[#1A2B3C] shadow-sm transition-all duration-500 hover:shadow-2xl"
+        className="group relative h-96 w-full overflow-hidden rounded-2xl bg-[#1A2B3C] shadow-sm transition-all duration-500 hover:shadow-2xl"
         data-testid="destination-map-card"
       >
         {/* Watercolor map filling the card border-to-border */}

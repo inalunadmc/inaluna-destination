@@ -10,13 +10,13 @@ const destinations = [
     id: 'bogota',
     titleKey: 'bogota_title',
     descKey: 'bogota_desc',
-    image: 'https://images.pexels.com/photos/19675596/pexels-photo-19675596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800'
+    image: 'https://images.unsplash.com/photo-1681145553138-816eb004b846?auto=format&fit=crop&w=1600&q=85'
   },
   {
     id: 'cartagena',
     titleKey: 'cartagena_title',
     descKey: 'cartagena_desc',
-    image: 'https://images.unsplash.com/photo-1759474946083-08fef767181e?auto=format&fit=crop&w=1600&q=85'
+    image: 'https://images.unsplash.com/photo-1714686495394-73e2bb1bbd39?auto=format&fit=crop&w=1600&q=85'
   },
   {
     id: 'medellin',
@@ -92,7 +92,7 @@ const Colombia = ({ hideHeading = false }) => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 onClick={() => handleCityClick(dest.id)}
-                className="group relative h-96 overflow-hidden bg-white shadow-sm transition-all duration-500 hover:shadow-xl cursor-pointer"
+                className="group relative h-96 overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-500 hover:shadow-xl cursor-pointer"
                 data-testid={`destination-card-${dest.id}`}
               >
                 <img

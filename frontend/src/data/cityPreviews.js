@@ -5,7 +5,7 @@ export const cityPreviews = {
     bogota: {
       id: 'bogota',
       title: 'Bogotá',
-      previewImage: 'https://images.pexels.com/photos/19675596/pexels-photo-19675596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800',
+      previewImage: 'https://images.unsplash.com/photo-1681145553138-816eb004b846?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'Discover our curated capital experience — where culture, gastronomy and history converge.',
       pointsOfInterest: [
         'Historic La Candelaria',
@@ -18,7 +18,7 @@ export const cityPreviews = {
     cartagena: {
       id: 'cartagena',
       title: 'Cartagena',
-      previewImage: 'https://images.unsplash.com/photo-1759474946083-08fef767181e?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.unsplash.com/photo-1714686495394-73e2bb1bbd39?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'A timeless walled city where Caribbean charm and colonial elegance meet.',
       pointsOfInterest: [
         'Walled Old City',
@@ -72,7 +72,7 @@ export const cityPreviews = {
     bogota: {
       id: 'bogota',
       title: 'Bogotá',
-      previewImage: 'https://images.pexels.com/photos/19675596/pexels-photo-19675596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1200&w=1800',
+      previewImage: 'https://images.unsplash.com/photo-1681145553138-816eb004b846?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'Descubre nuestra experiencia curada de la capital — donde convergen cultura, gastronomía e historia.',
       pointsOfInterest: [
         'La Candelaria Histórica',
@@ -85,7 +85,7 @@ export const cityPreviews = {
     cartagena: {
       id: 'cartagena',
       title: 'Cartagena',
-      previewImage: 'https://images.unsplash.com/photo-1759474946083-08fef767181e?auto=format&fit=crop&w=1600&q=85',
+      previewImage: 'https://images.unsplash.com/photo-1714686495394-73e2bb1bbd39?auto=format&fit=crop&w=1600&q=85',
       shortDescription: 'Una ciudad amurallada atemporal donde el encanto caribeño se une a la elegancia colonial.',
       pointsOfInterest: [
         'Ciudad Amurallada',

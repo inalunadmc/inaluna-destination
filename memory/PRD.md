@@ -43,8 +43,7 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Destination Cards v3 — Luminous Imagery**: Replaced the 5 destination card images and preview modals with ultra-vibrant, bright, sunny, high-definition photographs: Bogotá (Pexels Monserrate blue sky), Cartagena (Unsplash bright colonial facades), Medellín (Pexels vibrant skyline + mountains + blue sky), Coffee Region (Unsplash bright wax palms Cocora), Cali (Pexels aerial Cristo Rey). All brightened, no shadows/vignetting/vintage filters. `object-cover` applied.
-- **Destination Cards v2** (previous iteration swapped from stock Pexels to Unsplash luxury) — superseded by v3.
-- **Interactive Map v3**: 5 hover zones (Caribe, Pacífico, 3x Andina) → `CityPreviewModal` → `VER MÁS` → curated `CityModal`.
+- **Destination Cards v4 — Rounded + Bogotá/Cartagena Refresh**: Swapped Bogotá image to Unsplash aerial downtown + Monserrate backdrop (`photo-1681145553138-816eb004b846`) and Cartagena to Unsplash vibrant colonial street (`photo-1714686495394-73e2bb1bbd39`). Added `rounded-2xl` (16px) to all 5 destination cards + MapCard for a cohesive modern luxury frame. Medellín/Coffee/Cali preserved.
+- **Interactive Map v3**: 5 hover zones → `CityPreviewModal` → `VER MÁS` → curated `CityModal`.
 
 ## Completed: Feb 2026
