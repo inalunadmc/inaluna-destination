@@ -43,8 +43,7 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Cartagena v5 — Aerial Walled City**: Swapped Cartagena to Unsplash+ premium aerial shot (`premium_photo-1754251343401-8ea5ca4cf5fe`) showing the historic colonial fortification wall + red-tiled rooftops + sunlit colonial façade. Luxury/MICE grade, no shadows, warm, clean. Preview modal synced.
-- **Previous (v4)**: Bogotá aerial + Monserrate + rounded-2xl on all cards.
-- **Interactive Map v3**: 5 hover zones → `CityPreviewModal` → `VER MÁS` → curated `CityModal`.
+- **Map Expanded Modal**: New `MapExpandedModal.jsx`. Clicking the MapCard opens a large centered modal with the full watercolor map, 5 interactive hover zones (Caribe→Cartagena, Pacífico→Cali, Andina x3 → Bogotá/Medellín/Coffee) and bilingual footer tagline. Closes via (a) X button top-right, (b) backdrop click, (c) Esc key. Hover inside shows the compact `CityPreviewModal`; `VER MÁS` closes expanded + opens curated `CityModal`. The small `MapCard` is now a `<button>` with a `Maximize` badge indicating interactivity, and no longer owns the hover zones directly.
+- **Cartagena v6**: Set to Unsplash `photo-1583531352515-8884af319dc1` (vibrant Getsemaní colonial street).
 
 ## Completed: Feb 2026
