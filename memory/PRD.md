@@ -43,7 +43,7 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Map v4 — San Andrés y Providencia + Aspect-Precise**: New map image `inaluna-colombia-map-v2.jpg` (875x1216) with San Andrés y Providencia inset at top-left. MapCard uses `object-contain` so the full map is centered and visible without deformation inside the navy frame. MapExpandedModal uses `aspect-[875/1216]` so hover coordinates align precisely with each region. Hover zones repositioned: Caribe (top, shifted right), Pacífico (bottom-left under inset), Andina x3 (Medellín, Coffee, Bogotá). Solid navy strip at bottom covers baked-in tagline so bilingual overlay (`map_footer_tagline`) is the only visible one.
-- **Map Expanded Modal**: X / backdrop click / Esc close. Hover opens `CityPreviewModal` → VER MÁS opens curated `CityModal`.
+- **Map v5 — Baked-X Masked + Floating Close**: Hidden the baked-in grey X circle in the top-right of the watercolor image using an absolute white cover `top-[1.5-2%] right-[2.5-3%] w-[10-11%] aspect-square` positioned relative to an inner aspect-ratio-matched wrapper, so the cover aligns precisely with image coords whether in compact MapCard or in the aspect-[875/1216] expanded modal. Removed the invisible hit-area over the X. Added a visible, styled **floating close button** at `fixed top-6 right-6 z-50` on the dark backdrop — outside the image — with navy bg, gold hover, blur border. Esc + backdrop click still close. Modal is now `max-h-[85vh]` so the entire map fits comfortably.
+- **Previous (v4)**: San Andrés y Providencia inset, aspect-precise hovers.
 
 ## Completed: Feb 2026

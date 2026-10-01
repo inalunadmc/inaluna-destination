@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import CityPreviewModal from './CityPreviewModal';
@@ -112,6 +113,15 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
             className="fixed inset-0 z-40 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-8"
             data-testid="map-expanded-backdrop"
           >
+            {/* Floating close button — positioned OUTSIDE the image, on the dark backdrop */}
+            <button
+              onClick={onClose}
+              className="fixed top-6 right-6 z-50 text-[#F5F2ED] bg-[#1A2B3C]/90 hover:bg-[#D4C2A1] hover:text-[#1A2B3C] transition-all duration-300 rounded-full p-3 shadow-xl border border-[#D4C2A1]/30 backdrop-blur-sm cursor-pointer"
+              data-testid="map-expanded-close-btn"
+              aria-label="Close map"
+            >
+              <X size={22} />
+            </button>
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -121,21 +131,19 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
               data-testid="map-expanded-container"
             >
               {/* Container matches image aspect ratio so hover coords align precisely */}
-              <div className="relative aspect-[875/1216] max-h-[88vh] w-full overflow-hidden rounded-2xl bg-[#1A2B3C] shadow-2xl">
-                {/* Invisible hit-area over the X icon already drawn in the image (top-right) */}
-                <button
-                  onClick={onClose}
-                  className="absolute top-[2%] right-[3%] z-30 w-[10%] aspect-square rounded-full bg-transparent cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4C2A1]"
-                  data-testid="map-expanded-close-btn"
-                  aria-label="Close map"
-                />
-
+              <div className="relative aspect-[875/1216] max-h-[85vh] w-full overflow-hidden rounded-2xl bg-[#1A2B3C] shadow-2xl">
                 <img
                   src="/inaluna-colombia-map-v2.jpg"
                   alt="Inaluna DMC - Colombia watercolor map with San Andrés y Providencia"
                   className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
                   draggable={false}
                   data-testid="colombia-map-image-expanded"
+                />
+
+                {/* Cream patch over the baked-in close icon in the image corner */}
+                <span
+                  className="absolute top-[1.5%] right-[2.5%] w-[11%] aspect-square bg-white pointer-events-none"
+                  aria-hidden="true"
                 />
 
                 {REGIONS.map((region) => (

@@ -27,14 +27,24 @@ const MapCard = ({ index = 0, onCityOpen }) => {
         data-testid="destination-map-card"
         aria-label="Open interactive map of Colombia"
       >
-        {/* Watercolor map (San Andrés inset included) centered via object-contain */}
-        <img
-          src="/inaluna-colombia-map-v2.jpg"
-          alt="Inaluna DMC - Colombia watercolor map with San Andrés y Providencia"
-          className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none transition-transform duration-700 group-hover:scale-105"
-          draggable={false}
-          data-testid="colombia-map-image"
-        />
+        {/* Watercolor map (San Andrés inset included) centered via object-contain.
+            Inner container matches image aspect ratio so overlays align with image coords. */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="relative h-full aspect-[875/1216] max-w-full">
+            <img
+              src="/inaluna-colombia-map-v2.jpg"
+              alt="Inaluna DMC - Colombia watercolor map with San Andrés y Providencia"
+              className="absolute inset-0 w-full h-full object-contain select-none transition-transform duration-700 group-hover:scale-105"
+              draggable={false}
+              data-testid="colombia-map-image"
+            />
+            {/* Cover the baked-in X in the image's top-right corner */}
+            <span
+              className="absolute top-[2%] right-[3%] w-[11%] aspect-square bg-white"
+              aria-hidden="true"
+            />
+          </div>
+        </div>
 
         {/* Expand icon badge */}
         <span className="absolute top-4 right-4 z-20 flex items-center gap-2 bg-[#1A2B3C]/70 backdrop-blur-sm text-[#D4C2A1] text-[10px] uppercase tracking-[0.3em] px-3 py-1.5 rounded-full transition-all duration-300 group-hover:bg-[#D4C2A1] group-hover:text-[#1A2B3C]">
