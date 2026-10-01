@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import CityPreviewModal from './CityPreviewModal';
@@ -123,14 +122,13 @@ const MapExpandedModal = ({ isOpen, onClose, onCityOpen }) => {
             >
               {/* Container matches image aspect ratio so hover coords align precisely */}
               <div className="relative aspect-[875/1216] max-h-[88vh] w-full overflow-hidden rounded-2xl bg-[#1A2B3C] shadow-2xl">
+                {/* Invisible hit-area over the X icon already drawn in the image (top-right) */}
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 z-30 text-[#F5F2ED] bg-[#1A2B3C]/80 hover:bg-[#D4C2A1] hover:text-[#1A2B3C] transition-colors rounded-full p-2.5 shadow-lg"
+                  className="absolute top-[2%] right-[3%] z-30 w-[10%] aspect-square rounded-full bg-transparent cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4C2A1]"
                   data-testid="map-expanded-close-btn"
                   aria-label="Close map"
-                >
-                  <X size={22} />
-                </button>
+                />
 
                 <img
                   src="/inaluna-colombia-map-v2.jpg"
