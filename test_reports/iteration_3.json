@@ -1,0 +1,33 @@
+{
+  "summary": "Verified the bug fix for the duplicated close (X) button in MapExpandedModal on /colombia. Only the baked-in grey circular X in the image is now visible — the React lucide X has been removed. All three close methods (invisible hit-area over baked-in X, Esc key, backdrop click) work. Full hover→preview→SeeMore flow works end-to-end, and bilingual EN/ES strings match the spec exactly.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "tests_executed": [
+    {"test": "Visual – only one X in modal", "result": "PASS – svg count inside map-expanded-container = 0; close-btn inner HTML is empty; bg transparent; screenshot shows only the baked-in grey circular X from the image at top-right."},
+    {"test": "Close via invisible hit-area (data-testid=map-expanded-close-btn)", "result": "PASS – modal detached after click"},
+    {"test": "Close via Esc key", "result": "PASS – modal detached after keypress"},
+    {"test": "Close via backdrop click", "result": "PASS – modal detached after mouse click on backdrop region outside the modal container"},
+    {"test": "Flow: MapCard click → MapExpandedModal → hover andina-bogota → CityPreviewModal (city-preview-bogota) → SEE MORE → CityModal (city-modal-bogota)", "result": "PASS – city-modal-bogota, city-modal-backdrop, highlight-0, highlight-1 testids appear after SEE MORE click. (Note: map-expanded-container momentarily still in DOM due to framer-motion exit animation at ~1s wait, but visually gone — not a bug.)"},
+    {"test": "EN tagline", "result": "PASS – 'Inaluna DMC - Your Door to Colombia'"},
+    {"test": "EN hint", "result": "PASS – 'Hover over a region to explore' (visually uppercased via CSS)"},
+    {"test": "ES tagline", "result": "PASS – 'Inaluna DMC - Tu Puerta a Colombia'"},
+    {"test": "ES hint", "result": "PASS – 'Pasa el cursor sobre una región para explorar'"},
+    {"test": "ES SEE MORE text", "result": "PASS – 'Ver Más'"}
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "MapExpandedModal.jsx is clean: lucide X import removed, invisible hit-area button has aria-label='Close map' and keyboard focus ring — accessibility preserved.",
+    "Minor nit (not blocking): The hint <p> is a sibling of the aspect-ratio container but still a descendant of map-expanded-container's parent motion.div. Using data-testid for the hint text would make localized E2E assertions more robust (currently relies on class p.uppercase)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (skipped per request)", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Bug fix for duplicated X in /colombia MapExpandedModal verified end-to-end. Backdrop click requires clicking at coordinates outside the max-w-[600px] modal container (e.g., to the right of the container) because the top navbar sits above the backdrop (z-index) and will swallow clicks at (0,0)-ish coordinates near the viewport top-left. Framer-motion exit animations (~400ms) can cause map-expanded-container to still be queryable right after onClose fires; use wait_for_selector state='detached' for reliable assertions."
+}
