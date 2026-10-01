@@ -1,0 +1,44 @@
+{
+  "summary": "Verified the two surgical fixes on /colombia: (1) the broken gold scroll-fade logic has been fully removed from CityPreviewModal and CityModal — modals now scroll cleanly end-to-end with no overlay artefact and no console errors; (2) the two Bogotá highlight images were swapped to new Unsplash URLs. Both new images return 200 and load (naturalWidth=1000). Full UX flow (destination card → CityModal, MapCard → MapExpandedModal → region hover → CityPreviewModal → SEE MORE → CityModal) works in EN. No regressions in close methods, scroll behaviour, or sticky header. However, the newly swapped Bogotá 'Salt Cathedral' image is a palm-trees-at-sunset photo (semantically wrong) and the 'Tejo Experience' image is a generic bar interior — both are a content regression vs. prior Pexels assets.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "CityModal — Bogotá highlights",
+        "issues": [
+          "highlight-1 'Salt Cathedral' image (photo-1596436889106-be35e843f974) renders a palm-trees-at-sunset scene — does NOT depict the Catedral de Sal de Zipaquirá. Clear content regression.",
+          "highlight-0 'Tejo Experience' image (photo-1514933651103-005eec06c04b) renders a dark bar/cantina interior with no visible tejo court or players — weak/ambiguous match for the Tejo cultural experience."
+        ]
+      }
+    ]
+  },
+  "tests_executed": [
+    {"test": "/colombia page load (1280x720)", "result": "PASS — no console/page errors"},
+    {"test": "destination-card-bogota → city-modal-bogota opens", "result": "PASS"},
+    {"test": "Bogotá highlight images load (both new URLs)", "result": "PASS — naturalWidth=1000 on highlight-0 and highlight-1 (no 404)"},
+    {"test": "CityModal body scroll (scrollHeight=804 > clientHeight=535)", "result": "PASS — scrolls to bottom, no errors, no fade overlay element present"},
+    {"test": "CityModal close via modal-close-btn", "result": "PASS"},
+    {"test": "destination-map-card → map-expanded-container", "result": "PASS"},
+    {"test": "Region hover → city-preview-cartagena opens", "result": "PASS"},
+    {"test": "CityPreviewModal body scroll (732 > 550)", "result": "PASS — scrolls cleanly, no fade overlay"},
+    {"test": "preview-see-more-btn → CityModal transition", "result": "PASS — city-modal-cartagena opens"}
+  ],
+  "test_report_links": [],
+  "action_items": [
+    "Replace Bogotá highlight-1 image with an actual Catedral de Sal de Zipaquirá photo (underground salt cathedral with illuminated crosses). Current URL shows palm trees at sunset.",
+    "Reconsider Bogotá highlight-0 image — current URL (bar interior) does not clearly convey the Tejo experience. Prefer a photo showing the tejo court/clay target or players."
+  ],
+  "critical_code_review_comments": [
+    "Scroll-fade removal is clean: CityPreviewModal (121 lines) and CityModal (92 lines) no longer carry the useRef+onScroll+onLoad hooks nor the gradient overlay. flex-col + sticky header + overflow-y-auto still work as designed — this is the right call since the prior gradient was broken.",
+    "No visual regression on scrolling, close, or modal flow — all three close methods (X button, backdrop, Esc) and the preview→see-more→full-modal chain remain intact.",
+    "Only regression is image content relevance on 2 of 2 swapped Bogotá highlights (see design_issues)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (not in scope)", "frontend": "90% — flow 100%, image semantics 0/2"},
+  "seed_data_creation": "none",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Scroll-fade logic has been intentionally removed (not restored). If the user wants the 'fade dorado' effect back, it must be re-implemented from scratch — the current code has NO fade gradient in either modal. The two Bogotá image URL swaps load successfully (HTTP 200) but are semantically off, especially the Salt Cathedral replacement which shows palm trees. Testids used: destination-card-bogota, city-modal-bogota, modal-close-btn, destination-map-card, map-expanded-container, map-expanded-region-*, city-preview-*, preview-see-more-btn, highlight-0, highlight-1."
+}
