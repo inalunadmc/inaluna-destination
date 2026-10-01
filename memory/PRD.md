@@ -43,7 +43,7 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Map v6 — Clean Image**: Replaced the map with the new clean asset `/inaluna-colombia-map-v3.jpg` (1093x976) — no baked-in X, no baked-in English/Spanish tagline, keeps the SAN ANDRÉS Y PROVIDENCIA inset. Removed all white patch covers from `MapCard.jsx` and `MapExpandedModal.jsx`. Container uses `aspect-[1093/976]` + `object-contain` + `max-h-85vh` so the full map renders without crop. Readjusted REGIONS hover coordinates for the new layout (Caribe north, Pacífico southwest, Andina x3 center). Floating close button lives on the dark backdrop (`fixed top-6 right-6 z-50`) — fully outside the image. Esc + backdrop click still work.
-- **Multilenguaje**: `map_footer_tagline` + `hover_hint` dinámicos EN/ES; "SAN ANDRÉS Y PROVIDENCIA" en recuadro queda igual en ambos idiomas (nombre propio).
+- **Modal Responsive Fix**: Both `CityPreviewModal` and `CityModal` now use `max-h-[90vh]` + `max-w-2xl / max-w-5xl` + `flex flex-col` with a **sticky header** (title + X close stay visible) and **scrollable body** (`overflow-y-auto flex-1`). Image heights capped: `CityPreviewModal` preview at `h-[220px] md:h-[280px]`, `CityModal` highlight images at `max-h-[300px] h-auto object-cover`. Both modals fit comfortably on 720p viewports without content being cut off.
+- **Previous (v6)**: Clean map asset `/inaluna-colombia-map-v3.jpg`.
 
 ## Completed: Feb 2026

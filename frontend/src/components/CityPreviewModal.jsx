@@ -6,10 +6,9 @@ import { cityPreviews } from '../data/cityPreviews';
 
 /**
  * Compact city preview shown on region hover.
- * Displays: "[CITY] HIGHLIGHTS" header, preview image, city title,
- * bulleted points of interest, short description and "SEE MORE" CTA.
- * The CTA calls onSeeMore(cityId) which the parent uses to open the
- * existing curated-highlights CityModal.
+ * Layout: sticky header (title + X) that stays visible, scrollable body
+ * (image + points of interest + CTA). Full-screen responsive: max-h-[90vh]
+ * so the modal always fits the viewport.
  */
 const CityPreviewModal = ({ cityId, isOpen, onClose, onSeeMore }) => {
   const { language, t } = useLanguage();
@@ -33,7 +32,7 @@ const CityPreviewModal = ({ cityId, isOpen, onClose, onSeeMore }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={handleBackdrop}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 md:p-6"
           data-testid="city-preview-backdrop"
         >
           <motion.div
@@ -41,80 +40,78 @@ const CityPreviewModal = ({ cityId, isOpen, onClose, onSeeMore }) => {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 10 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full max-w-3xl bg-[#F5F2ED] shadow-2xl overflow-hidden"
+            className="relative w-full max-w-2xl max-h-[90vh] bg-[#F5F2ED] shadow-2xl overflow-hidden flex flex-col rounded-md"
             data-testid={`city-preview-${city.id}`}
           >
-            <button
-              onClick={onClose}
-              className="absolute top-5 right-5 z-10 text-[#F5F2ED] bg-[#1A2B3C]/70 hover:bg-[#1A2B3C] transition-colors rounded-full p-2"
-              data-testid="preview-close-btn"
-              aria-label="Close"
-            >
-              <X size={20} />
-            </button>
-
-            {/* Header overline: BOGOTÁ HIGHLIGHTS */}
-            <div className="bg-[#1A2B3C] px-8 md:px-12 py-5">
-              <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-[#D4C2A1] font-semibold text-center">
+            {/* STICKY HEADER — title + X stay visible while body scrolls */}
+            <div className="sticky top-0 z-20 bg-[#1A2B3C] px-6 md:px-10 py-4 flex items-center justify-between flex-shrink-0">
+              <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-[#D4C2A1] font-semibold">
                 {city.title.toUpperCase()} {t('highlights_suffix')}
               </p>
-            </div>
-
-            {/* Preview image */}
-            <div className="relative h-64 md:h-80 w-full overflow-hidden">
-              <img
-                src={city.previewImage}
-                alt={city.title}
-                className="w-full h-full object-cover"
-                data-testid="preview-image"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-            </div>
-
-            <div className="px-8 md:px-14 py-10">
-              {/* City title */}
-              <h2
-                className="text-4xl md:text-5xl font-bold text-[#1A2B3C] mb-3 leading-tight"
-                data-testid="preview-title"
+              <button
+                onClick={onClose}
+                className="text-[#F5F2ED] hover:text-[#D4C2A1] transition-colors rounded-full p-1 flex-shrink-0"
+                data-testid="preview-close-btn"
+                aria-label="Close"
               >
-                {city.title}
-              </h2>
+                <X size={22} />
+              </button>
+            </div>
 
-              {/* Short description */}
-              <p className="text-base md:text-lg text-[#4A5D70] italic leading-relaxed mb-8">
-                {city.shortDescription}
-              </p>
-
-              {/* Points of interest */}
-              <div className="mb-10">
-                <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-[#D4C2A1] font-bold mb-4">
-                  {t('points_of_interest')}
-                </p>
-                <ul className="space-y-2" data-testid="preview-points">
-                  {city.pointsOfInterest.map((point, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-3 text-lg md:text-xl text-[#1A2B3C]"
-                    >
-                      <span className="text-[#D4C2A1] mt-2 flex-shrink-0">
-                        <span className="block w-2 h-px bg-[#D4C2A1]" />
-                      </span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
+            {/* SCROLLABLE BODY */}
+            <div className="overflow-y-auto flex-1">
+              {/* Preview image — compact so it doesn't take the full viewport */}
+              <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden flex-shrink-0">
+                <img
+                  src={city.previewImage}
+                  alt={city.title}
+                  className="w-full h-full object-cover"
+                  data-testid="preview-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
 
-              {/* CTA VER MÁS */}
-              <button
-                type="button"
-                onClick={handleSeeMore}
-                className="group inline-flex items-center gap-3 bg-[#1A2B3C] text-[#F5F2ED] px-8 py-4 text-xs uppercase tracking-[0.35em] font-semibold hover:bg-[#D4C2A1] hover:text-[#1A2B3C] transition-all duration-300"
-                data-testid="preview-see-more-btn"
-              >
-                {t('see_more')}
-                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+              <div className="px-6 md:px-12 py-8 md:py-10">
+                <h2
+                  className="text-3xl md:text-4xl font-bold text-[#1A2B3C] mb-2 leading-tight"
+                  data-testid="preview-title"
+                >
+                  {city.title}
+                </h2>
+
+                <p className="text-sm md:text-base text-[#4A5D70] italic leading-relaxed mb-6">
+                  {city.shortDescription}
+                </p>
+
+                <div className="mb-8">
+                  <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-[#D4C2A1] font-bold mb-3">
+                    {t('points_of_interest')}
+                  </p>
+                  <ul className="space-y-2" data-testid="preview-points">
+                    {city.pointsOfInterest.map((point, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-base md:text-lg text-[#1A2B3C]"
+                      >
+                        <span className="mt-2 flex-shrink-0">
+                          <span className="block w-2 h-px bg-[#D4C2A1]" />
+                        </span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleSeeMore}
+                  className="group inline-flex items-center gap-3 bg-[#1A2B3C] text-[#F5F2ED] px-7 py-3.5 text-xs uppercase tracking-[0.35em] font-semibold hover:bg-[#D4C2A1] hover:text-[#1A2B3C] transition-all duration-300"
+                  data-testid="preview-see-more-btn"
+                >
+                  {t('see_more')}
+                  <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
+              </div>
             </div>
           </motion.div>
         </motion.div>

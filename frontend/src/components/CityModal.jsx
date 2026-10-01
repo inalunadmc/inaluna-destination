@@ -24,7 +24,7 @@ const CityModal = ({ cityId, isOpen, onClose }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={handleBackdropClick}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 md:p-6"
           data-testid="city-modal-backdrop"
         >
           <motion.div
@@ -32,45 +32,49 @@ const CityModal = ({ cityId, isOpen, onClose }) => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-[#F5F2ED] max-w-5xl w-full max-h-[90vh] overflow-y-auto relative"
+            className="bg-[#F5F2ED] max-w-5xl w-full max-h-[90vh] overflow-hidden relative flex flex-col rounded-md"
             data-testid={`city-modal-${city.id}`}
           >
-            <button
-              onClick={onClose}
-              className="absolute top-6 right-6 z-10 text-[#1A2B3C] hover:text-[#D4C2A1] transition-colors"
-              data-testid="modal-close-btn"
-              aria-label="Close"
-            >
-              <X size={32} />
-            </button>
-
-            <div className="p-12 md:p-16">
-              <h2 className="text-5xl md:text-6xl font-bold text-[#1A2B3C] mb-4">
+            {/* STICKY HEADER — title + X stay visible while body scrolls */}
+            <div className="sticky top-0 z-20 bg-[#F5F2ED]/95 backdrop-blur-sm px-8 md:px-12 py-5 flex items-center justify-between border-b border-[#D4C2A1]/20 flex-shrink-0">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#1A2B3C] leading-tight">
                 {city.title}
               </h2>
-              <p className="text-xl text-[#4A5D70] mb-12 leading-relaxed">
+              <button
+                onClick={onClose}
+                className="text-[#1A2B3C] hover:text-[#D4C2A1] transition-colors flex-shrink-0"
+                data-testid="modal-close-btn"
+                aria-label="Close"
+              >
+                <X size={28} />
+              </button>
+            </div>
+
+            {/* SCROLLABLE BODY */}
+            <div className="overflow-y-auto flex-1 px-8 md:px-16 pt-8 pb-12">
+              <p className="text-lg md:text-xl text-[#4A5D70] mb-10 leading-relaxed">
                 {city.description}
               </p>
 
-              <div className="space-y-12">
+              <div className="space-y-10">
                 {city.highlights.map((highlight, index) => (
                   <div
                     key={index}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
                     data-testid={`highlight-${index}`}
                   >
                     <div className={index % 2 === 0 ? 'md:order-1' : 'md:order-2'}>
                       <img
                         src={highlight.image}
                         alt={highlight.title}
-                        className="w-full h-80 object-cover shadow-lg"
+                        className="w-full max-h-[300px] h-auto object-cover shadow-lg"
                       />
                     </div>
                     <div className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
-                      <h3 className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-4">
+                      <h3 className="text-xs md:text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-3">
                         {t('curated_highlight')} {index + 1}
                       </h3>
-                      <p className="text-2xl text-[#1A2B3C] leading-relaxed">
+                      <p className="text-lg md:text-xl text-[#1A2B3C] leading-relaxed">
                         {highlight.text}
                       </p>
                     </div>
