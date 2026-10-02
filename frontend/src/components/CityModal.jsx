@@ -52,7 +52,7 @@ const CityModal = ({ cityId, isOpen, onClose }) => {
 
             {/* SCROLLABLE BODY */}
             <div className="flex-1 overflow-y-auto px-8 md:px-16 pt-8 pb-12">
-              <p className="text-lg md:text-xl text-[#4A5D70] mb-10 leading-relaxed">
+              <p className="text-lg md:text-xl text-[#1A2B3C] font-normal mb-10 leading-relaxed">
                 {city.description}
               </p>
 
@@ -73,10 +73,10 @@ const CityModal = ({ cityId, isOpen, onClose }) => {
                       </div>
                     </div>
                     <div className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
-                      <h3 className="text-xs md:text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-3">
+                      <h3 className="text-xs md:text-sm uppercase tracking-widest text-[#D4C2A1] font-semibold mb-3">
                         {t('curated_highlight')} {index + 1}
                       </h3>
-                      <p className="text-lg md:text-xl text-[#1A2B3C] leading-relaxed">
+                      <p className="text-lg md:text-xl text-[#1A2B3C] font-normal leading-relaxed">
                         {highlight.text}
                       </p>
                     </div>

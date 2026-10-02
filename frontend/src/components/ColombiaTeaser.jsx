@@ -41,7 +41,7 @@ const ColombiaTeaser = () => {
           <h2 className="text-4xl md:text-5xl text-[#1A2B3C] leading-[1.15] mb-8 italic font-light">
             {t('colombia_teaser_title')}
           </h2>
-          <p className="text-lg text-[#4A5D70] leading-relaxed mb-10">
+          <p className="text-lg text-[#1A2B3C] font-normal leading-relaxed mb-10">
             {t('colombia_teaser_text')}
           </p>
           <Link

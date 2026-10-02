@@ -101,6 +101,10 @@ code {
         margin: 0 !important;
         padding: 0 !important;
         top: 0 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+    }
+    h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select, li, label {
+        font-family: 'Cormorant Garamond', serif !important;
     }
 }
 

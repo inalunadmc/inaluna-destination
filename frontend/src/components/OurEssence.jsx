@@ -45,7 +45,7 @@ const OurEssence = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.4 }}
-          className="text-lg md:text-xl text-[#4A5D70] leading-relaxed max-w-3xl mx-auto"
+          className="text-lg md:text-xl text-[#1A2B3C] font-normal leading-relaxed max-w-3xl mx-auto"
         >
           {t('essence_paragraph')}
         </motion.p>
