@@ -38,44 +38,44 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 w-full m-0 p-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#1A2B3C] shadow-lg'
-          : 'bg-[#1A2B3C]/20 backdrop-blur-md'
+          ? 'bg-[#1A2B3C]/95 backdrop-blur-md shadow-lg'
+          : 'bg-[#1A2B3C]/90 backdrop-blur-md'
       }`}
       data-testid="main-navigation"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
-        <div className="flex items-center space-x-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+        <div className="flex items-center space-x-10">
           <Link
             to="/"
-            className="text-[#F5F2ED] text-base font-bold hover:text-[#D4C2A1] transition-colors"
+            className="text-[#D4C2A1] text-sm font-normal uppercase tracking-[0.25em] hover:text-[#F5F2ED] transition-colors"
             data-testid="nav-home-btn"
           >
             {t('nav_home')}
           </Link>
           <button
             onClick={() => scrollToSection('who-we-are')}
-            className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
+            className="text-[#D4C2A1] text-sm font-normal uppercase tracking-[0.25em] hover:text-[#F5F2ED] transition-colors hidden md:block"
             data-testid="nav-about-btn"
           >
             {t('nav_about')}
           </button>
           <Link
             to="/colombia"
-            className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
+            className="text-[#D4C2A1] text-sm font-normal uppercase tracking-[0.25em] hover:text-[#F5F2ED] transition-colors hidden md:block"
             data-testid="nav-destinations-btn"
           >
             {t('nav_destinations')}
           </Link>
           <button
             onClick={() => scrollToSection('highlights')}
-            className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
+            className="text-[#D4C2A1] text-sm font-normal uppercase tracking-[0.25em] hover:text-[#F5F2ED] transition-colors hidden md:block"
             data-testid="nav-experiences-btn"
           >
             {t('nav_experiences')}
           </button>
           <button
             onClick={openContact}
-            className="text-[#F5F2ED] text-base hover:text-[#D4C2A1] transition-colors hidden md:block"
+            className="text-[#D4C2A1] text-sm font-normal uppercase tracking-[0.25em] hover:text-[#F5F2ED] transition-colors hidden md:block"
             data-testid="nav-contact-btn"
           >
             {t('nav_contact')}
@@ -84,11 +84,11 @@ const Navigation = () => {
         
         <button
           onClick={toggleLanguage}
-          className="flex items-center gap-2 text-[#F5F2ED] hover:text-[#D4C2A1] transition-colors"
+          className="flex items-center gap-2 text-[#D4C2A1] hover:text-[#F5F2ED] transition-colors"
           data-testid="language-toggle-btn"
         >
-          <Globe size={18} />
-          <span className="text-base font-bold uppercase">{language}</span>
+          <Globe size={16} />
+          <span className="text-sm font-normal uppercase tracking-[0.25em]">{language}</span>
         </button>
       </div>
     </nav>
