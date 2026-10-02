@@ -4,6 +4,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body, #root, main {
+    margin: 0 !important;
+    padding: 0 !important;
+    top: 0 !important;
+}
+
 body {
     margin: 0;
     padding: 0;
