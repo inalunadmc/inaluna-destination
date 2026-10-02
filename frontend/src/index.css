@@ -97,6 +97,11 @@ code {
     body {
         @apply bg-background text-foreground;
     }
+    html, body, #root {
+        margin: 0 !important;
+        padding: 0 !important;
+        top: 0 !important;
+    }
 }
 
 @layer base {
