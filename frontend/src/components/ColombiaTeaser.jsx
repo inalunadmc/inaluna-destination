@@ -19,7 +19,7 @@ const ColombiaTeaser = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9 }}
-          className="relative h-[500px] overflow-hidden"
+          className="relative h-[500px] overflow-hidden rounded-xl"
         >
           <img
             src="https://images.unsplash.com/photo-1672851612770-f969b3efc02d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwxfHxDb2xvbWJpYSUyMHZpYnJhbnQlMjBjb2xvcmZ1bCUyMGxhbmRzY2FwZSUyMGx1eHVyeSUyMHRyYXZlbCUyMENvY29yYSUyMHZhbGxleXxlbnwwfHx8fDE3ODExMTg4OTF8MA&ixlib=rb-4.1.0&q=85"

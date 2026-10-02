@@ -43,7 +43,7 @@ const HighlightCard = ({ highlight, index, t }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay: index * 0.1 }}
-    className="group relative h-[500px] overflow-hidden bg-[#1A2B3C] shadow-sm transition-all duration-500 hover:shadow-xl"
+    className="group relative h-[500px] overflow-hidden rounded-xl bg-[#1A2B3C] shadow-sm transition-all duration-500 hover:shadow-xl"
     data-testid={`highlight-card-${highlight.id}`}
   >
     <img
