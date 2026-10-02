@@ -84,11 +84,11 @@ const CityPreviewModal = ({ cityId, isOpen, onClose, onSeeMore }) => {
                   <p className="text-[10px] md:text-xs uppercase tracking-widest text-[#D4C2A1] font-semibold mb-3 font-serif">
                     {t('points_of_interest')}
                   </p>
-                  <ul className="space-y-2 font-serif" data-testid="preview-points">
+                  <ul className="space-y-2.5 font-serif" data-testid="preview-points">
                     {city.pointsOfInterest.map((point, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-3 text-base md:text-lg text-[#1A2B3C] font-medium leading-relaxed font-serif"
+                        className="flex items-start gap-3 text-[15px] text-[#1A2B3C] font-normal leading-relaxed font-serif"
                       >
                         <span className="mt-2 flex-shrink-0">
                           <span className="block w-2 h-px bg-[#D4C2A1]" />
