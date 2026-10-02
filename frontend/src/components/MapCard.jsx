@@ -21,7 +21,7 @@ const MapCard = ({ index = 0, onCityOpen }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: index * 0.1 }}
-        className="group relative h-96 w-full overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-500 hover:shadow-2xl text-left p-0 border-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4C2A1]"
+        className="group relative h-96 w-full overflow-hidden rounded-2xl bg-[#F5F2ED] shadow-sm transition-all duration-500 hover:shadow-2xl text-left p-0 border-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4C2A1]"
         data-testid="destination-map-card"
         aria-label="Open interactive map of Colombia"
       >
@@ -39,15 +39,15 @@ const MapCard = ({ index = 0, onCityOpen }) => {
           <span className="hidden sm:inline">{t('explore_map') || 'Explore'}</span>
         </span>
 
-        {/* Bilingual tagline overlay — clean image has no baked-in text */}
-        <div className="absolute inset-x-0 bottom-0 z-20 px-6 pb-5 pt-10 pointer-events-none bg-gradient-to-t from-[#1A2B3C] via-[#1A2B3C]/90 to-transparent">
+        {/* Bottom title — matches destination cards (uppercase, tracking, serif) */}
+        <div className="absolute inset-x-0 bottom-0 z-20 px-6 pb-6 pt-10 pointer-events-none bg-gradient-to-t from-[#1A2B3C] via-[#1A2B3C]/85 to-transparent">
           <div className="flex flex-col items-center">
-            <p
-              className="text-center text-[#F5F2ED] italic text-base md:text-lg leading-tight"
-              data-testid="map-footer-tagline"
+            <h3
+              className="text-center text-white uppercase tracking-[0.25em] text-xl md:text-2xl font-bold leading-tight"
+              data-testid="map-card-title"
             >
-              {t('map_footer_tagline')}
-            </p>
+              {t('map_card_title')}
+            </h3>
             <div className="mt-3 h-px w-12 bg-[#D4C2A1]" />
           </div>
         </div>
