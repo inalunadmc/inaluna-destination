@@ -23,10 +23,10 @@ const ColombiaMap = () => {
           <Leaf size={16} />
           <span>{t('map_overline')}</span>
         </div>
-        <h3 className="text-3xl md:text-5xl font-light italic text-[#1A2B3C] mb-5">
+        <h3 className="text-3xl md:text-5xl font-medium text-[#1A2B3C] mb-5">
           {t('map_title')}
         </h3>
-        <p className="text-lg md:text-xl text-[#1A2B3C] font-normal italic mb-10">
+        <p className="text-base text-[#1A2B3C] font-normal italic mb-10">
           {t('map_subtitle')}
         </p>
         <div className="inline-flex items-center gap-3 text-[#1A2B3C] font-bold uppercase tracking-wider text-sm border-b-2 border-[#D4C2A1] pb-2 group-hover:text-[#D4C2A1] group-hover:gap-4 transition-all">

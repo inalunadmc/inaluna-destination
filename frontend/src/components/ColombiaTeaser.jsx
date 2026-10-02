@@ -38,10 +38,11 @@ const ColombiaTeaser = () => {
           <p className="text-xs md:text-sm uppercase tracking-[0.4em] text-[#D4C2A1] font-bold mb-6">
             {t('colombia_teaser_overline')}
           </p>
-          <h2 className="text-4xl md:text-5xl text-[#1A2B3C] leading-[1.15] mb-8 italic font-light">
-            {t('colombia_teaser_title')}
+          <h2 className="text-4xl md:text-5xl text-[#1A2B3C] leading-[1.15] mb-8 font-normal">
+            {t('colombia_teaser_title_main')}{' '}
+            <span className="italic">{t('colombia_teaser_title_italic')}</span>
           </h2>
-          <p className="text-lg text-[#1A2B3C] font-normal leading-relaxed mb-10">
+          <p className="text-base md:text-lg text-[#1A2B3C] font-normal leading-relaxed mb-10">
             {t('colombia_teaser_text')}
           </p>
           <Link

@@ -27,7 +27,7 @@ const WhoWeAre = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl md:text-5xl text-[#1A2B3C] leading-relaxed"
+          className="text-xl md:text-2xl text-[#1A2B3C] font-normal leading-relaxed"
         >
           {t('who_we_are_text_part1')}{' '}
           <span className="italic">{t('who_we_are_precision')}</span>{' '}
@@ -36,7 +36,7 @@ const WhoWeAre = () => {
           {t('who_we_are_text_part2')}{' '}
           <span className="italic">{t('who_we_are_soul')}</span>
           {t('who_we_are_text_part3')}{' '}
-          <span className="font-bold">{t('who_we_are_text_emphasis')}</span>
+          <span className="font-medium text-[#1A2B3C]">{t('who_we_are_text_emphasis')}</span>
         </motion.p>
       </div>
     </section>
