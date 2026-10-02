@@ -43,7 +43,7 @@ Inspired by https://www.dmcnetwork.com/, with strict brand guidelines:
 - Add SEO meta tags
 
 ## Recent Updates (Feb 2026)
-- **Gold Scroll Fade**: Both `CityPreviewModal` and `CityModal` now show a subtle gold gradient (`#D4C2A1 55% → 15% → 0%`) at the bottom of the scrollable body when content overflows. The fade is wrapped in a `relative > overflow-hidden` container and uses a React ref + `scrollHeight > clientHeight + 2` + `atBottom` detection via `onScroll`, `onLoad` on images, and `useEffect` on mount. Fades out at 300ms when the user reaches the bottom. 100% CSS-driven after mount, no re-render during scroll.
-- **Modal Responsive Fix**: Both modals use `max-h-[90vh]` + `flex flex-col` with sticky header (title + X stay visible) and scrollable body.
+- **Curated Highlights v2 — Rounded + Real Imagery**: Replaced Bogotá Salt Cathedral and Cartagena Sunset highlight images with user-uploaded assets `/bog-catedral-zipa.webp` (Zipaquirá miner statue at the Salt Cathedral complex) and `/ctg-atardecer.webp` (Cartagena walled city sunset from water). Renamed Cartagena highlight #1 from "Sunset Sailing" to "Sunset from the Ramparts" / "Atardecer en las Murallas" with new text matching the image. Added `rounded-xl overflow-hidden shadow-lg` wrapper around every CityModal curated highlight image for consistent luxury frame.
+- **Modal Responsive Fix**: Both modals use `max-h-[85vh] + flex flex-col` + sticky header + scrollable body.
 
 ## Completed: Feb 2026

@@ -64,11 +64,13 @@ const CityModal = ({ cityId, isOpen, onClose }) => {
                     data-testid={`highlight-${index}`}
                   >
                     <div className={index % 2 === 0 ? 'md:order-1' : 'md:order-2'}>
-                      <img
-                        src={highlight.image}
-                        alt={highlight.title}
-                        className="w-full max-h-[300px] h-auto object-cover shadow-lg"
-                      />
+                      <div className="overflow-hidden rounded-xl shadow-lg">
+                        <img
+                          src={highlight.image}
+                          alt={highlight.title}
+                          className="w-full max-h-[300px] h-auto object-cover"
+                        />
+                      </div>
                     </div>
                     <div className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
                       <h3 className="text-xs md:text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-3">

@@ -12,7 +12,7 @@ export const cityHighlights = {
         },
         {
           title: 'Salt Cathedral',
-          image: 'https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1000&q=80',
+          image: '/bog-catedral-zipa.webp',
           text: "A private visit to the Salt Cathedral, one of Colombia's most extraordinary landmarks. An immersive journey beneath the surface, transformed into a refined cultural experience."
         }
       ]
@@ -23,9 +23,9 @@ export const cityHighlights = {
       description: 'A timeless destination where history, architecture and Caribbean charm meet. Sunset sailing along the coastline, followed by curated dining in hidden courtyards, Cartagena invites a slower, more refined way to experience Colombia.',
       highlights: [
         {
-          title: 'Sunset Sailing',
-          image: 'https://images.pexels.com/photos/4316233/pexels-photo-4316233.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-          text: "A private sunset sailing experience along Cartagena's coastline, where soft light and open waters create the perfect setting. A serene moment defined by calm, elegance and the essence of the Caribbean."
+          title: 'Sunset from the Ramparts',
+          image: '/ctg-atardecer.webp',
+          text: "A private sunset moment on Cartagena's historic ramparts, where the Caribbean sky turns pastel over the walled city. A serene, luminous end to the day defined by heritage, calm and quiet elegance."
         },
         {
           title: 'Casa 1537',
@@ -133,7 +133,7 @@ export const cityHighlights = {
         },
         {
           title: 'Catedral de Sal',
-          image: 'https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1000&q=80',
+          image: '/bog-catedral-zipa.webp',
           text: 'Una visita privada a la Catedral de Sal, uno de los lugares más extraordinarios de Colombia. Un viaje inmersivo bajo la superficie, transformado en una experiencia cultural refinada.'
         }
       ]
@@ -144,9 +144,9 @@ export const cityHighlights = {
       description: 'Un destino atemporal donde se encuentran historia, arquitectura y encanto caribeño. Navegación al atardecer por la costa, seguida de cenas curadas en patios escondidos, Cartagena invita a una forma más lenta y refinada de experimentar Colombia.',
       highlights: [
         {
-          title: 'Navegación al Atardecer',
-          image: 'https://images.pexels.com/photos/4316233/pexels-photo-4316233.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-          text: 'Una experiencia privada de navegación al atardecer a lo largo de la costa de Cartagena, donde la luz suave y las aguas abiertas crean el escenario perfecto. Un momento sereno definido por la calma, la elegancia y la esencia del Caribe.'
+          title: 'Atardecer en las Murallas',
+          image: '/ctg-atardecer.webp',
+          text: 'Un momento privado al atardecer sobre las murallas históricas de Cartagena, mientras el cielo del Caribe se tiñe de pasteles sobre la ciudad amurallada. Un cierre luminoso y sereno marcado por el patrimonio, la calma y la elegancia silenciosa.'
         },
         {
           title: 'Casa 1537',
