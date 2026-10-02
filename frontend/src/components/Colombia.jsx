@@ -57,7 +57,7 @@ const Colombia = ({ hideHeading = false }) => {
     <>
       <section
         id="colombia"
-        className="bg-[#F5F2ED] py-24 md:py-32 px-6 md:px-12 lg:px-24"
+        className="bg-[#F5F2ED] py-12 md:py-16 px-6 md:px-12 lg:px-24"
         data-testid="colombia-section"
       >
         <div className="max-w-7xl mx-auto">
@@ -67,7 +67,7 @@ const Colombia = ({ hideHeading = false }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-8 text-center"
+              className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-6 text-center"
             >
               {t('colombia_title')}
             </motion.h2>
@@ -78,12 +78,12 @@ const Colombia = ({ hideHeading = false }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl md:text-3xl text-[#1A2B3C] leading-relaxed text-center mb-16 max-w-4xl mx-auto"
+            className="text-2xl md:text-3xl text-[#1A2B3C] leading-relaxed text-center mb-10 max-w-4xl mx-auto"
           >
             {t('colombia_intro')}
           </motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-10">
             {destinations.map((dest, index) => (
               <motion.div
                 key={dest.id}
@@ -103,7 +103,7 @@ const Colombia = ({ hideHeading = false }) => {
                 <div className="absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/10" />
                 
                 <div className="absolute inset-0 flex flex-col justify-end p-8 translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
-                  <h3 className="text-3xl font-bold text-white mb-2">
+                  <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-[0.25em] mb-2">
                     {t(dest.titleKey)}
                   </h3>
                   <p className="text-white/90 text-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100 line-clamp-3">

@@ -8,7 +8,7 @@ const WhoWeAre = () => {
   return (
     <section
       id="who-we-are"
-      className="bg-[#F5F2ED] py-32 md:py-40 flex justify-center items-center text-center px-6 md:px-12"
+      className="bg-[#F5F2ED] py-12 md:py-16 flex justify-center items-center text-center px-6 md:px-12"
       data-testid="who-we-are-section"
     >
       <div className="max-w-5xl">
@@ -17,7 +17,7 @@ const WhoWeAre = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-8"
+          className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-6"
         >
           {t('who_we_are_title')}
         </motion.h2>

@@ -55,7 +55,7 @@ const HighlightCard = ({ highlight, index, t }) => (
     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
 
     <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none">
-      <h3 className="text-2xl font-bold text-white leading-tight">
+      <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-[0.25em] leading-tight">
         {t(highlight.titleKey)}
       </h3>
     </div>
@@ -68,7 +68,7 @@ const CuratedHighlights = () => {
   return (
     <section
       id="highlights"
-      className="bg-white py-24 md:py-32 px-6 md:px-12 lg:px-24"
+      className="bg-white py-12 md:py-16 px-6 md:px-12 lg:px-24"
       data-testid="highlights-section"
     >
       <div className="max-w-7xl mx-auto">
@@ -77,7 +77,7 @@ const CuratedHighlights = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-8 text-center"
+          className="text-sm uppercase tracking-[0.3em] text-[#D4C2A1] font-bold mb-6 text-center"
         >
           {t('highlights_title')}
         </motion.h2>
