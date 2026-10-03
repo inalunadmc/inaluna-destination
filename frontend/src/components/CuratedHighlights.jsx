@@ -18,17 +18,17 @@ const highlights = [
   {
     id: 'wellness',
     titleKey: 'wellness_title',
-    image: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?crop=entropy&cs=tinysrgb&fm=jpg&q=85&w=1200'
+    image: '/axm-bienestar.webp'
   },
   {
     id: 'cultural',
     titleKey: 'cultural_title',
-    image: 'https://images.pexels.com/photos/31720547/pexels-photo-31720547.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1200'
+    image: '/baq-manglar4.webp'
   },
   {
     id: 'nature',
     titleKey: 'nature_title',
-    image: 'https://images.pexels.com/photos/15951870/pexels-photo-15951870.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1200'
+    image: '/axm-mirador-hotel.webp'
   },
   {
     id: 'tailor',
@@ -54,8 +54,8 @@ const HighlightCard = ({ highlight, index, t }) => (
     />
     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
 
-    <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none">
-      <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-[0.25em] leading-tight">
+    <div className="absolute inset-x-0 bottom-0 p-6 pointer-events-none">
+      <h3 className="text-lg md:text-xl font-bold text-white uppercase tracking-[0.25em] leading-snug break-words">
         {t(highlight.titleKey)}
       </h3>
     </div>

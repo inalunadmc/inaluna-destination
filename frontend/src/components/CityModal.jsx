@@ -68,7 +68,7 @@ const CityModal = ({ cityId, isOpen, onClose }) => {
                         <img
                           src={highlight.image}
                           alt={highlight.title}
-                          className="w-full max-h-[300px] h-auto object-cover"
+                          className="w-full max-h-[300px] h-auto object-cover object-top"
                         />
                       </div>
                     </div>
