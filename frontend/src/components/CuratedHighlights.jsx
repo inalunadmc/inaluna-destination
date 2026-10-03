@@ -69,7 +69,7 @@ const CuratedHighlights = () => {
 
   return (
     <section
-      id="highlights"
+      id="experiences"
       className="bg-white py-12 md:py-16 px-6 md:px-12 lg:px-24"
       data-testid="highlights-section"
     >
