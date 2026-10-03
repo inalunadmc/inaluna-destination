@@ -41,7 +41,7 @@ export const cityHighlights = {
       highlights: [
         {
           title: 'Silletero Experience',
-          image: 'https://images.pexels.com/photos/33436721/pexels-photo-33436721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          image: '/mde-pueblito-p5.webp',
           text: "An authentic experience rooted in Colombia's floral traditions. A private encounter with local silleteros, surrounded by nature and craftsmanship, where culture, heritage and artistry are expressed in their purest form."
         },
         {
@@ -75,7 +75,7 @@ export const cityHighlights = {
       highlights: [
         {
           title: 'Salsa Experience',
-          image: 'https://images.pexels.com/photos/8281151/pexels-photo-8281151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          image: '/clo-salsa.webp',
           text: "An intimate dance experience, guided by local experts. A carefully curated encounter with Colombia's rhythm and culture, where movement becomes connection and authenticity takes center stage."
         },
         {
@@ -162,7 +162,7 @@ export const cityHighlights = {
       highlights: [
         {
           title: 'Experiencia Silletera',
-          image: 'https://images.pexels.com/photos/33436721/pexels-photo-33436721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          image: '/mde-pueblito-p5.webp',
           text: 'Una experiencia auténtica arraigada en las tradiciones florales de Colombia. Un encuentro privado con silleteros locales, rodeados de naturaleza y artesanía, donde la cultura, el patrimonio y el arte se expresan en su forma más pura.'
         },
         {
@@ -196,7 +196,7 @@ export const cityHighlights = {
       highlights: [
         {
           title: 'Experiencia de Salsa',
-          image: 'https://images.pexels.com/photos/8281151/pexels-photo-8281151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+          image: '/clo-salsa.webp',
           text: 'Una experiencia íntima de baile, guiada por expertos locales. Un encuentro cuidadosamente curado con el ritmo y la cultura de Colombia, donde el movimiento se convierte en conexión y la autenticidad toma el escenario principal.'
         },
         {

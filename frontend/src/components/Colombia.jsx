@@ -16,7 +16,7 @@ const destinations = [
     id: 'cartagena',
     titleKey: 'cartagena_title',
     descKey: 'cartagena_desc',
-    image: 'https://images.unsplash.com/photo-1583531352515-8884af319dc1?auto=format&fit=crop&w=1600&q=85'
+    image: '/ctg-calles4.webp'
   },
   {
     id: 'medellin',
