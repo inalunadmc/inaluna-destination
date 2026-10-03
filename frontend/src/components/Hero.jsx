@@ -4,8 +4,8 @@ import { useLanguage } from '../context/LanguageContext';
 
 const heroImages = [
   {
-    src: '/ctg-torre-reloj.jpg',
-    position: 'center 80%'
+    src: '/ctg-atardecer.webp',
+    position: 'center'
   },
   {
     src: 'https://images.unsplash.com/photo-1672851612770-f969b3efc02d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwxfHxDb2xvbWJpYSUyMHZpYnJhbnQlMjBjb2xvcmZ1bCUyMGxhbmRzY2FwZSUyMGx1eHVyeSUyMHRyYXZlbCUyMENvY29yYSUyMHZhbGxleXxlbnwwfHx8fDE3ODExMTg4OTF8MA&ixlib=rb-4.1.0&q=85',
@@ -33,7 +33,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative h-[80vh] max-h-[85vh] w-full flex flex-col items-center justify-center text-center overflow-hidden" data-testid="hero-section">
+    <section id="hero" className="relative min-h-[90vh] h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden" data-testid="hero-section">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentImage}
@@ -49,7 +49,7 @@ const Hero = () => {
             className="w-full h-full object-cover"
             style={{ objectPosition: heroImages[currentImage].position }}
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/25" />
         </motion.div>
       </AnimatePresence>
 
