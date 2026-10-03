@@ -55,7 +55,10 @@ const HighlightCard = ({ highlight, index, t }) => (
     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
 
     <div className="absolute inset-x-0 bottom-0 p-6 pointer-events-none">
-      <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-[0.12em] leading-snug text-center break-normal hyphens-none px-4">
+      <h3
+        className="text-xs sm:text-sm font-bold text-white uppercase tracking-[0.10em] text-center break-normal hyphens-none px-3"
+        style={{ lineHeight: 1.3 }}
+      >
         {t(highlight.titleKey)}
       </h3>
     </div>

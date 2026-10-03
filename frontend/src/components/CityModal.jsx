@@ -69,7 +69,7 @@ const CityModal = ({ cityId, isOpen, onClose }) => {
                           src={highlight.image}
                           alt={highlight.title}
                           className="w-full max-h-[300px] h-auto object-cover brightness-110 contrast-105"
-                          style={{ objectPosition: 'center 40%' }}
+                          style={{ objectPosition: 'center 25%' }}
                         />
                       </div>
                     </div>
