@@ -33,7 +33,8 @@ const highlights = [
   {
     id: 'tailor',
     titleKey: 'tailor_title',
-    image: 'https://images.unsplash.com/photo-1583531352515-8884af319dc1?crop=entropy&cs=tinysrgb&fm=jpg&q=85&w=1200'
+    image: '/mde-helicoptero.webp',
+    position: 'center 30%'
   }
 ];
 
@@ -51,6 +52,7 @@ const HighlightCard = ({ highlight, index, t }) => (
       alt={t(highlight.titleKey)}
       loading="lazy"
       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      style={highlight.position ? { objectPosition: highlight.position } : undefined}
     />
     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
 

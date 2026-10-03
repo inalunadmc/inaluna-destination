@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
 const heroImages = [
@@ -33,25 +33,32 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-[90vh] h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden" data-testid="hero-section">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentImage}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.8, ease: 'easeInOut' }}
-          className="absolute inset-0 z-0"
+    <section
+      id="hero"
+      className="relative min-h-[90vh] h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden bg-[#1A2B3C]"
+      data-testid="hero-section"
+    >
+      {/* Layered crossfade slides */}
+      {heroImages.map((img, idx) => (
+        <div
+          key={img.src}
+          className="absolute inset-0 z-0 transition-opacity ease-in-out"
+          style={{
+            opacity: idx === currentImage ? 1 : 0,
+            transitionDuration: '1500ms'
+          }}
         >
           <img
-            src={heroImages[currentImage].src}
+            src={img.src}
             alt="Colombia landscape"
             className="w-full h-full object-cover"
-            style={{ objectPosition: heroImages[currentImage].position }}
+            style={{ objectPosition: img.position }}
           />
-          <div className="absolute inset-0 bg-black/25" />
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      ))}
+
+      {/* Soft dark overlay */}
+      <div className="absolute inset-0 z-[1] bg-black/25 pointer-events-none" />
 
       <div className="relative z-10 flex flex-col items-center justify-center gap-8 px-6">
         <motion.img
