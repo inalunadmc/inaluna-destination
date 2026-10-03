@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { LanguageProvider } from './context/LanguageContext';
 import { ContactOverlayProvider } from './context/ContactOverlayContext';
 import HomePage from './pages/HomePage';
+import ColombiaPage from './pages/ColombiaPage';
 import ContactOverlay from './components/ContactOverlay';
 import BackToTop from './components/BackToTop';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -15,9 +16,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* Legacy redirect — ensures /colombia from old links or Hostinger refresh falls back to the single-page site */}
-            <Route path="/colombia" element={<Navigate to="/#colombia" replace />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/colombia" element={<ColombiaPage />} />
           </Routes>
           <ContactOverlay />
           <BackToTop />

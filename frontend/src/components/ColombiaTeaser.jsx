@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -44,22 +45,14 @@ const ColombiaTeaser = () => {
           <p className="text-base md:text-lg text-[#1A2B3C] font-normal leading-relaxed mb-10">
             {t('colombia_teaser_text')}
           </p>
-          <a
-            href="#colombia"
-            onClick={(e) => {
-              e.preventDefault();
-              const el = document.getElementById('colombia');
-              if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-                if (window.history) window.history.replaceState(null, '', '#colombia');
-              }
-            }}
+          <Link
+            to="/colombia"
             className="inline-flex items-center gap-3 bg-[#1A2B3C] text-[#F5F2ED] px-10 py-4 text-base font-bold tracking-wider uppercase transition-all duration-300 hover:bg-[#D4C2A1] hover:text-[#1A2B3C] hover:gap-5 group"
             data-testid="colombia-teaser-cta"
           >
             <span>{t('colombia_teaser_cta')}</span>
             <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

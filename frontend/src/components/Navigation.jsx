@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Globe } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useContactOverlay } from '../context/ContactOverlayContext';
 
@@ -7,6 +8,8 @@ const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
   const { openContact } = useContactOverlay();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,18 +20,16 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (id) => {
-    if (id === 'hero' || id === 'top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (window.history && window.location.hash) {
-        window.history.replaceState(null, '', window.location.pathname);
-      }
-      return;
-    }
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      if (window.history) {
-        window.history.replaceState(null, '', `#${id}`);
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
   };
@@ -44,13 +45,13 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-10">
-          <button
-            onClick={() => scrollToSection('hero')}
+          <Link
+            to="/"
             className="text-[#D4C2A1] text-sm font-normal uppercase tracking-[0.25em] hover:text-[#F5F2ED] transition-colors"
             data-testid="nav-home-btn"
           >
             {t('nav_home')}
-          </button>
+          </Link>
           <button
             onClick={() => scrollToSection('who-we-are')}
             className="text-[#D4C2A1] text-sm font-normal uppercase tracking-[0.25em] hover:text-[#F5F2ED] transition-colors hidden md:block"
@@ -58,15 +59,15 @@ const Navigation = () => {
           >
             {t('nav_about')}
           </button>
-          <button
-            onClick={() => scrollToSection('colombia')}
+          <Link
+            to="/colombia"
             className="text-[#D4C2A1] text-sm font-normal uppercase tracking-[0.25em] hover:text-[#F5F2ED] transition-colors hidden md:block"
             data-testid="nav-destinations-btn"
           >
             {t('nav_destinations')}
-          </button>
+          </Link>
           <button
-            onClick={() => scrollToSection('experiences')}
+            onClick={() => scrollToSection('highlights')}
             className="text-[#D4C2A1] text-sm font-normal uppercase tracking-[0.25em] hover:text-[#F5F2ED] transition-colors hidden md:block"
             data-testid="nav-experiences-btn"
           >
