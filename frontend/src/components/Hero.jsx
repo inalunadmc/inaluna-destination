@@ -3,10 +3,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
 const heroImages = [
-  'https://images.unsplash.com/photo-1583531352515-8884af319dc1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwxfHxDYXJ0YWdlbmElMjBDb2xvbWJpYSUyMGNvbG9yZnVsJTIwY29sb25pYWwlMjBidWlsZGluZ3MlMjBzdW5zZXQlMjBsdXh1cnl8ZW58MHx8fHwxNzgxMTE4ODkxfDA&ixlib=rb-4.1.0&q=85',
-  'https://images.unsplash.com/photo-1672851612770-f969b3efc02d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwxfHxDb2xvbWJpYSUyMHZpYnJhbnQlMjBjb2xvcmZ1bCUyMGxhbmRzY2FwZSUyMGx1eHVyeSUyMHRyYXZlbCUyMENvY29yYSUyMHZhbGxleXxlbnwwfHx8fDE3ODExMTg4OTF8MA&ixlib=rb-4.1.0&q=85',
-  'https://images.unsplash.com/photo-1560242374-ca6dd3434522?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwyfHxDYXJ0YWdlbmElMjBDb2xvbWJpYSUyMGNvbG9yZnVsJTIwY29sb25pYWwlMjBidWlsZGluZ3MlMjBzdW5zZXQlMjBsdXh1cnl8ZW58MHx8fHwxNzgxMTE4ODkxfDA&ixlib=rb-4.1.0&q=85',
-  'https://images.unsplash.com/photo-1631134942435-448dbf07a42a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwzfHxDb2xvbWJpYSUyMHZpYnJhbnQlMjBjb2xvcmZ1bCUyMGxhbmRzY2FwZSUyMGx1eHVyeSUyMHRyYXZlbCUyMENvY29yYSUyMHZhbGxleXxlbnwwfHx8fDE3ODExMTg4OTF8MA&ixlib=rb-4.1.0&q=85'
+  {
+    src: '/ctg-torre-reloj.jpg',
+    position: 'center bottom'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1672851612770-f969b3efc02d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwxfHxDb2xvbWJpYSUyMHZpYnJhbnQlMjBjb2xvcmZ1bCUyMGxhbmRzY2FwZSUyMGx1eHVyeSUyMHRyYXZlbCUyMENvY29yYSUyMHZhbGxleXxlbnwwfHx8fDE3ODExMTg4OTF8MA&ixlib=rb-4.1.0&q=85',
+    position: 'center'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1560242374-ca6dd3434522?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwyfHxDYXJ0YWdlbmElMjBDb2xvbWJpYSUyMGNvbG9yZnVsJTIwY29sb25pYWwlMjBidWlsZGluZ3MlMjBzdW5zZXQlMjBsdXh1cnl8ZW58MHx8fHwxNzgxMTE4ODkxfDA&ixlib=rb-4.1.0&q=85',
+    position: 'center'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1631134942435-448dbf07a42a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwzfHxDb2xvbWJpYSUyMHZpYnJhbnQlMjBjb2xvcmZ1bCUyMGxhbmRzY2FwZSUyMGx1eHVyeSUyMHRyYXZlbCUyMENvY29yYSUyMHZhbGxleXxlbnwwfHx8fDE3ODExMTg4OTF8MA&ixlib=rb-4.1.0&q=85',
+    position: 'center'
+  }
 ];
 
 const Hero = () => {
@@ -32,9 +44,10 @@ const Hero = () => {
           className="absolute inset-0 z-0"
         >
           <img
-            src={heroImages[currentImage]}
+            src={heroImages[currentImage].src}
             alt="Colombia landscape"
             className="w-full h-full object-cover"
+            style={{ objectPosition: heroImages[currentImage].position }}
           />
           <div className="absolute inset-0 bg-black/40" />
         </motion.div>

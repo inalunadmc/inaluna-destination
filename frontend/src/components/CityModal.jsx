@@ -64,11 +64,12 @@ const CityModal = ({ cityId, isOpen, onClose }) => {
                     data-testid={`highlight-${index}`}
                   >
                     <div className={index % 2 === 0 ? 'md:order-1' : 'md:order-2'}>
-                      <div className="overflow-hidden rounded-xl shadow-lg">
+                      <div className="overflow-hidden rounded-xl">
                         <img
                           src={highlight.image}
                           alt={highlight.title}
-                          className="w-full max-h-[300px] h-auto object-cover object-top"
+                          className="w-full max-h-[300px] h-auto object-cover brightness-110 contrast-105"
+                          style={{ objectPosition: 'center 40%' }}
                         />
                       </div>
                     </div>

@@ -29,7 +29,7 @@ export const cityHighlights = {
         },
         {
           title: 'Casa 1537',
-          image: 'https://images.unsplash.com/photo-1490465998231-e16519a88298?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHxjb2xvbmlhbCUyMGNvdXJ0eWFyZCUyMGRpbmluZyUyMENhcnRhZ2VuYSUyMGV2ZW5pbmd8ZW58MHx8fHwxNzgwMDcwOTAyfDA&ixlib=rb-4.1.0&q=85',
+          image: '/ctg-casa1537.jpg',
           text: 'An intimate dining moment within a hidden colonial residence, where architecture, atmosphere and refined service come together. A space designed for privacy, elegance and meaningful connection.'
         }
       ]
@@ -150,7 +150,7 @@ export const cityHighlights = {
         },
         {
           title: 'Casa 1537',
-          image: 'https://images.unsplash.com/photo-1490465998231-e16519a88298?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHxjb2xvbmlhbCUyMGNvdXJ0eWFyZCUyMGRpbmluZyUyMENhcnRhZ2VuYSUyMGV2ZW5pbmd8ZW58MHx8fHwxNzgwMDcwOTAyfDA&ixlib=rb-4.1.0&q=85',
+          image: '/ctg-casa1537.jpg',
           text: 'Un momento íntimo de cena dentro de una residencia colonial escondida, donde la arquitectura, la atmósfera y el servicio refinado se unen. Un espacio diseñado para la privacidad, la elegancia y la conexión significativa.'
         }
       ]
